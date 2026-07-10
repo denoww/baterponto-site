@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>baterponto — ponto eletrônico no celular do funcionário</title>
-<meta name="description" content="O funcionário bate o ponto pelo celular e recebe o NSR na hora. Selfie com prova de vida, geofence, fila offline e espelho de ponto. Registro imutável, REP-P." />
+<meta name="description" content="Ponto eletrônico para qualquer empresa. O funcionário bate pelo celular e recebe o NSR na hora. Selfie com prova de vida, geofence, fila offline e espelho de ponto. Registro imutável, REP-P." />
 
 <!-- enquanto o contato oficial não entra, o site fica fora do índice -->
 <meta name="robots" content="noindex" />
@@ -13,9 +13,15 @@
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="baterponto — o ponto bate no celular, a prova sai na hora" />
-<meta property="og:description" content="Ponto eletrônico para funcionários de condomínio. NSR na hora, registro imutável, funciona sem internet." />
+<meta property="og:description" content="Ponto eletrônico para qualquer empresa. NSR na hora, registro imutável, funciona sem internet." />
 <meta property="og:url" content="https://baterponto.app" />
 <meta property="og:locale" content="pt_BR" />
+<meta property="og:image" content="https://baterponto.app/assets/og.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Funcionário batendo ponto pelo celular — baterponto.app" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://baterponto.app/assets/og.jpg" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -240,6 +246,22 @@
   .passo h3{font-size:19px;font-weight:700;margin-top:18px;letter-spacing:-.01em}
   .passo p{margin-top:10px;font-size:14.5px;line-height:1.65;color:var(--cinza)}
 
+  /* faixa full-bleed: o gesto da batida */
+  .faixa{margin:0;position:relative;width:100%;height:clamp(260px,34vw,440px);overflow:hidden;background:var(--tinta)}
+  .faixa img{width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block}
+  .faixa figcaption{
+    position:absolute;left:0;right:0;bottom:0;padding:34px 24px 26px;
+    background:linear-gradient(transparent, rgba(27,20,36,.82));
+    color:#F7F5F9;font-family:'Azeret Mono',monospace;font-size:12px;letter-spacing:.13em;text-transform:uppercase;
+  }
+  /* alinha a legenda com o grid do .wrap (max 1120 com 24 de padding) */
+  .faixa figcaption span{display:block;max-width:calc(var(--max) - 48px);margin:0 auto;color:#D9D2E4}
+  .faixa figcaption b{color:#C9A6F0;font-weight:500}
+
+  /* retrato na seção do espelho */
+  .esp-foto{width:100%;height:230px;object-fit:cover;object-position:center 30%;
+            border-radius:16px;border:1px solid var(--linha);margin-bottom:28px;display:block}
+
   /* recursos */
   .recs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
   @media(max-width:900px){ .recs{grid-template-columns:1fr} }
@@ -354,7 +376,7 @@
       <div class="hero-acts">
         <a class="btn btn-solid" href="https://wa.me/556296701278?text=Ol%C3%A1%21%20Quero%20conhecer%20o%20sistema%20de%20ponto%20da%20baterponto." target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.4.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3Z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
-          Levar pro meu condomínio
+          Levar pra minha empresa
         </a>
         <a class="btn btn-line" href="#como">Ver como funciona</a>
       </div>
@@ -387,7 +409,7 @@
       </div>
 
       <div class="dev-top">
-        <div class="who">Bom dia, Diego<span>Residencial Jardim das Acácias</span></div>
+        <div class="who">Bom dia, Diego<span>Unidade Centro · Turno manhã</span></div>
         <span class="estado" id="estado">Aguardando início</span>
       </div>
 
@@ -411,7 +433,7 @@
         <input type="checkbox" id="cfgSelfie" checked />
         <span class="sw" aria-hidden="true"></span>
         <span class="txt">Exigir selfie + prova de vida
-          <small>Como o condomínio configura. Usa a câmera do seu aparelho.</small>
+          <small>Como a empresa configura. Usa a câmera do seu aparelho.</small>
         </span>
       </label>
 
@@ -460,7 +482,7 @@
         <p>
           Cada batida gera um <strong>NSR</strong> — Número Sequencial de Registro — na hora,
           e ele aparece na tela do funcionário. O registro nasce <strong>imutável</strong>:
-          nem o funcionário nem o síndico apagam.
+          nem o funcionário nem o gestor apagam.
         </p>
         <ul class="prova-lista">
           <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Prova de vida no momento da batida (REP-P)</span></li>
@@ -497,24 +519,31 @@
       <div class="passo">
         <div class="n">02</div>
         <h3>Confirma o rosto</h3>
-        <p>“Alinhe o rosto no oval.” Quando o condomínio exige prova de vida, vem o desafio de dois passos — vire o rosto pro lado.</p>
+        <p>“Alinhe o rosto no oval.” Quando a empresa exige prova de vida, vem o desafio de dois passos — vire o rosto pro lado.</p>
       </div>
       <div class="passo">
         <div class="n">03</div>
         <h3>Bate</h3>
-        <p>Sai o NSR na tela. Se o GPS estiver fora da área do condomínio, ou não houver internet, o app resolve — e avisa.</p>
+        <p>Sai o NSR na tela. Se o GPS estiver fora da área do trabalho, ou não houver internet, o app resolve — e avisa.</p>
       </div>
     </div>
   </div>
 </section>
+
+<!-- faixa: o gesto -->
+<figure class="faixa">
+  <img src="/assets/gesto.jpg" width="1536" height="1024" loading="lazy" decoding="async"
+       alt="Funcionário jovem toca a tela do celular para registrar o ponto." />
+  <figcaption><span>O ponto inteiro cabe <b>num toque</b></span></figcaption>
+</figure>
 
 <!-- RECURSOS -->
 <section class="sec" id="recursos">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Recursos</span>
-      <h2 class="disp">O que o condomínio liga quando precisa.</h2>
-      <p>Cada operação decide o que exigir. Nada disso é obrigatório — é configuração.</p>
+      <h2 class="disp">O que a empresa liga quando precisa.</h2>
+      <p>Escritório, obra, loja, clínica, portaria. Cada operação decide o que exigir — nada disso é obrigatório.</p>
     </div>
     <div class="recs">
       <div class="rec reveal">
@@ -525,7 +554,7 @@
       <div class="rec reveal">
         <div class="rec-ic"><svg viewBox="0 0 24 24"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
         <h3>Geofence</h3>
-        <p>Bate no condomínio, não do sofá de casa. A marcação guarda se o funcionário estava dentro da área.</p>
+        <p>Bate no trabalho, não do sofá de casa. A marcação guarda se o funcionário estava dentro da área.</p>
       </div>
       <div class="rec reveal">
         <div class="rec-ic"><svg viewBox="0 0 24 24"><path d="M4 16.5A4 4 0 0 1 6 9a6 6 0 0 1 11.3-1.6A4.3 4.3 0 0 1 20 15.6"/><path d="M12 12v8m0 0-3-3m3 3 3-3"/></svg></div>
@@ -544,8 +573,8 @@
       </div>
       <div class="rec reveal">
         <div class="rec-ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v16" stroke-linejoin="round"/><path d="M14 21V9h3a2 2 0 0 1 2 2v10" stroke-linejoin="round"/><path d="M8 7h2M8 11h2M8 15h2" stroke-linecap="round"/></svg></div>
-        <h3>Mais de um condomínio</h3>
-        <p>Quem tem vínculo em várias operações troca no topo da tela e bate no lugar certo.</p>
+        <h3>Mais de um vínculo</h3>
+        <p>Quem trabalha em mais de uma empresa ou unidade troca no topo da tela e bate no lugar certo.</p>
       </div>
     </div>
   </div>
@@ -555,6 +584,8 @@
 <section class="sec" id="espelho">
   <div class="wrap esp">
     <div class="reveal">
+      <img class="esp-foto" src="/assets/espelho.jpg" width="900" height="900" loading="lazy" decoding="async"
+           alt="Funcionária confere as próprias horas no celular durante a pausa." />
       <span class="eyebrow">Meu espelho</span>
       <h2 class="disp" style="font-size:clamp(27px,3.5vw,40px);font-weight:800;margin-top:16px">O fim do “me manda meu ponto?”</h2>
       <p style="margin-top:18px;font-size:16.5px;line-height:1.68;color:var(--cinza)">
@@ -590,7 +621,7 @@
         Batida errada não some. Ela vira um pedido de correção que o gestor analisa e aprova —
         e o histórico guarda o antes e o depois. É assim que o registro tem valor quando alguém precisa provar alguma coisa.
       </p>
-      <p class="cit">“Bateu errado ou esqueceu uma batida? Não dá pra apagar pelo app (a lei não permite).<br />Fale com o RH/gestor do condomínio para o ajuste.”</p>
+      <p class="cit">Bateu errado ou esqueceu uma batida? Não dá pra apagar pelo app — a lei não permite.<br />O ajuste passa pelo RH ou pelo gestor.</p>
     </div>
   </div>
 </section>
@@ -605,7 +636,7 @@
     <div class="faq">
       <div class="qa reveal">
         <button aria-expanded="false">O funcionário pode bater de casa? <span class="ic">+</span></button>
-        <div class="ans"><div><p>Só se o condomínio deixar. Com o geofence ligado, o app coleta a localização e a marcação registra se ele estava dentro da área. Fora da área, o gestor vê.</p></div></div>
+        <div class="ans"><div><p>Só se a empresa deixar. Com o geofence ligado, o app coleta a localização e a marcação registra se ele estava dentro da área. Fora da área, o gestor vê.</p></div></div>
       </div>
       <div class="qa reveal">
         <button aria-expanded="false">E se acabar a internet na hora de bater? <span class="ic">+</span></button>
@@ -617,15 +648,15 @@
       </div>
       <div class="qa reveal">
         <button aria-expanded="false">O app usa reconhecimento facial? <span class="ic">+</span></button>
-        <div class="ans"><div><p>Quando o condomínio exige, a batida vem com selfie e prova de vida — o app pede pra alinhar o rosto no oval e, no modo ativo, virar o rosto pro lado. Se a operação não exigir, é só o toque no botão.</p></div></div>
+        <div class="ans"><div><p>Quando a empresa exige, a batida vem com selfie e prova de vida — o app pede pra alinhar o rosto no oval e, no modo ativo, virar o rosto pro lado. Se a operação não exigir, é só o toque no botão.</p></div></div>
       </div>
       <div class="qa reveal">
         <button aria-expanded="false">O funcionário escolhe se é entrada ou saída? <span class="ic">+</span></button>
         <div class="ans"><div><p>Não. Ele só bate. O sistema classifica pela jornada dele e pela última marcação — entrada, início do intervalo, volta do intervalo ou saída. Menos erro, menos discussão.</p></div></div>
       </div>
       <div class="qa reveal">
-        <button aria-expanded="false">Quem trabalha em mais de um condomínio? <span class="ic">+</span></button>
-        <div class="ans"><div><p>Troca no seletor no topo da tela e bate no condomínio certo. Cada vínculo tem sua jornada e seu espelho.</p></div></div>
+        <button aria-expanded="false">Quem trabalha em mais de uma empresa? <span class="ic">+</span></button>
+        <div class="ans"><div><p>Troca no seletor no topo da tela e bate no lugar certo. Cada vínculo tem sua jornada e seu espelho.</p></div></div>
       </div>
     </div>
   </div>
@@ -635,8 +666,8 @@
 <section class="cta" id="falar">
   <div class="wrap reveal">
     <span class="eyebrow">Começar</span>
-    <h2 class="disp">Seu porteiro bate o ponto amanhã <em>de manhã</em>.</h2>
-    <p>Conte como é a operação do seu condomínio. A gente mostra o app rodando e você decide.</p>
+    <h2 class="disp">Seu time bate o ponto amanhã <em>de manhã</em>.</h2>
+    <p>Conte como é a operação da sua empresa. A gente mostra o app rodando e você decide.</p>
     <div class="hero-acts">
       <a class="btn btn-solid" href="https://wa.me/556296701278?text=Ol%C3%A1%21%20Quero%20conhecer%20o%20sistema%20de%20ponto%20da%20baterponto." target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.4.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3Z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
@@ -653,7 +684,7 @@
       <span class="brand-mark"><svg viewBox="0 0 100 100"><path d="M50 24v28l18 10" stroke="#fff" stroke-width="10" stroke-linecap="round" fill="none"/></svg></span>
       <span>baterponto<span class="tld">.app</span></span>
     </a>
-    <small>© 2026 baterponto · ponto eletrônico para condomínios</small>
+    <small>© 2026 baterponto · ponto eletrônico para empresas</small>
   </div>
 </footer>
 
@@ -764,7 +795,7 @@
       const semCam = e && (e.name === 'NotFoundError' || e.name === 'OverconstrainedError');
       await mostrarErro(
         negou ? 'Permissão negada' : semCam ? 'Nenhuma câmera encontrada' : 'Não deu pra abrir a câmera',
-        negou ? 'Sem problema — no app real o condomínio decide se a selfie é obrigatória. A demonstração segue sem ela.'
+        negou ? 'Sem problema — no app real a empresa decide se a selfie é obrigatória. A demonstração segue sem ela.'
               : 'A demonstração segue sem a selfie.'
       );
       return { ok: false, frames };
