@@ -90,6 +90,7 @@
 
   /* ---------- ASSINATURA: relógio + comprovante ---------- */
   .device{
+    position:relative;
     background:#fff;border:1px solid var(--linha);border-radius:22px;padding:30px 28px 28px;
     box-shadow:0 1px 2px rgba(27,20,36,.04),0 24px 60px -28px rgba(27,20,36,.22);
   }
@@ -120,6 +121,54 @@
   }
   .bater:hover:not(:disabled){background:var(--roxo-esc)}
   .bater:disabled{opacity:.55;cursor:not-allowed}
+
+  /* ---- toggle de config (espelha foto_em_toda_batida + liveness_modo) ---- */
+  .cfg{display:flex;align-items:flex-start;gap:11px;margin:0 0 18px;cursor:pointer}
+  .cfg input{position:absolute;opacity:0;width:0;height:0}
+  .cfg .sw{width:38px;height:22px;border-radius:999px;background:#D8D3DF;flex-shrink:0;position:relative;
+           transition:background .2s;margin-top:1px}
+  .cfg .sw::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;
+                  background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .2s}
+  .cfg input:checked + .sw{background:var(--roxo)}
+  .cfg input:checked + .sw::after{transform:translateX(16px)}
+  .cfg input:focus-visible + .sw{outline:2.5px solid var(--roxo);outline-offset:2px}
+  .cfg .txt{font-size:12.5px;line-height:1.45;color:var(--tinta);font-weight:600}
+  .cfg .txt small{display:block;font-weight:400;color:var(--cinza);font-size:11.5px;margin-top:2px}
+
+  /* ---- overlay de câmera ---- */
+  .cam{position:absolute;inset:0;border-radius:22px;overflow:hidden;background:#0D0B14;
+       display:none;flex-direction:column;z-index:5}
+  .cam.on{display:flex}
+  .cam-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
+  .cam-mask{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+  .cam-oval{width:58%;max-width:210px;aspect-ratio:3/4;border-radius:50%;border:2px solid var(--roxo);
+            box-shadow:0 0 0 2000px rgba(13,11,20,.72);transition:border-color .25s}
+  .cam.capturou .cam-oval{border-color:var(--registro)}
+  .cam-ui{position:relative;z-index:2;display:flex;flex-direction:column;height:100%;padding:22px;color:#fff}
+  .cam-passo{font-family:'Azeret Mono',monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+             color:#C9A6F0;text-align:center}
+  .cam-tit{text-align:center;font-weight:700;font-size:16px;margin-top:6px}
+  .cam-fim{margin-top:auto;text-align:center}
+  .cam-inst{font-size:15px;font-weight:600;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+  .cam-cont{font-family:'Azeret Mono',monospace;font-size:34px;font-weight:700;margin-top:8px;
+            text-shadow:0 2px 14px rgba(0,0,0,.6);min-height:44px}
+  .cam-priv{font-size:11px;color:#B8B0C4;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:6px}
+  .cam-priv svg{width:12px;height:12px;stroke:#B8B0C4;fill:none;stroke-width:2}
+  .cam-cancel{margin-top:14px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+              color:#fff;font-family:inherit;font-size:13px;font-weight:600;padding:10px 18px;border-radius:9px;cursor:pointer}
+  .cam-cancel:hover{background:rgba(255,255,255,.2)}
+  /* no estado de erro some o oval e o cabeçalho de passo */
+  .cam.erro .cam-mask,
+  .cam.erro .cam-passo,
+  .cam.erro .cam-tit{display:none}
+  .cam-erro{margin:auto;text-align:center;max-width:34ch}
+  .cam-erro p{font-size:14px;line-height:1.6;color:#DEDAE4}
+  .cam-erro b{display:block;font-size:15.5px;color:#fff;margin-bottom:8px}
+
+  /* miniaturas dos frames no comprovante */
+  .fita-thumbs{display:flex;gap:8px;justify-content:center;padding:12px 0 2px}
+  .fita-thumbs img{width:52px;height:64px;object-fit:cover;border-radius:4px;border:1px solid var(--linha);transform:scaleX(-1)}
+  .fita-thumbs.vazio{display:none}
 
   .hoje{margin-top:20px}
   .hoje .lbl{font-size:12.5px;color:var(--cinza);margin-bottom:10px}
@@ -314,6 +363,29 @@
 
     <!-- device -->
     <div class="device" aria-label="Demonstração da tela de bater ponto">
+
+      <!-- overlay de câmera: só abre no clique, nada sai do navegador -->
+      <div class="cam" id="cam" role="dialog" aria-modal="true" aria-label="Confirmar identidade">
+        <video class="cam-video" id="camVideo" playsinline muted autoplay></video>
+        <div class="cam-mask"><div class="cam-oval" id="camOval"></div></div>
+        <div class="cam-ui">
+          <div>
+            <div class="cam-passo" id="camPasso">Passo 1 de 2</div>
+            <div class="cam-tit" id="camTit">Confirmar identidade</div>
+          </div>
+          <div class="cam-erro" id="camErro" hidden></div>
+          <div class="cam-fim" id="camFim">
+            <div class="cam-inst" id="camInst">Alinhe o rosto no oval</div>
+            <div class="cam-cont" id="camCont"></div>
+            <div class="cam-priv">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+              A imagem não sai do seu navegador.
+            </div>
+            <button class="cam-cancel" id="camCancel" type="button">Cancelar</button>
+          </div>
+        </div>
+      </div>
+
       <div class="dev-top">
         <div class="who">Bom dia, Diego<span>Residencial Jardim das Acácias</span></div>
         <span class="estado" id="estado">Aguardando início</span>
@@ -334,6 +406,14 @@
           <div class="v saldo">+2h30</div>
         </div>
       </div>
+
+      <label class="cfg" for="cfgSelfie">
+        <input type="checkbox" id="cfgSelfie" checked />
+        <span class="sw" aria-hidden="true"></span>
+        <span class="txt">Exigir selfie + prova de vida
+          <small>Como o condomínio configura. Usa a câmera do seu aparelho.</small>
+        </span>
+      </label>
 
       <button class="bater" id="btnBater">Bater Entrada</button>
 
@@ -356,7 +436,10 @@
               <div class="row"><span>NSR</span><span id="fNsr">000000</span></div>
               <div class="row"><span>ORIGEM</span><span>APP</span></div>
               <div class="row"><span>GEOFENCE</span><span>DENTRO</span></div>
+              <div class="row" id="fRowSelfie"><span>SELFIE</span><span id="fSelfie">—</span></div>
+              <div class="row" id="fRowLive"><span>PROVA DE VIDA</span><span id="fLive">—</span></div>
             </div>
+            <div class="fita-thumbs vazio" id="fThumbs"></div>
             <hr />
             <div class="selo">Registro imutável · REP-P</div>
           </div>
@@ -601,16 +684,160 @@
   let i = 0, nsr = 417;
   const btn = $('btnBater'), pills = $('pills'), fita = $('fitaArea');
 
-  function bater() {
+  /* ================= CÂMERA / PROVA DE VIDA =================
+     Tudo local: getUserMedia → <canvas>. Nenhum byte sai daqui. */
+  const cam = $('cam');
+  let stream = null, cancelado = false;
+
+  const espera = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  function pararCamera() {
+    if (stream) { stream.getTracks().forEach((t) => t.stop()); stream = null; }
+    $('camVideo').srcObject = null;
+    cam.classList.remove('on', 'capturou', 'erro');
+  }
+
+  function mostrarErro(titulo, texto) {
+    cam.classList.add('erro');
+    $('camFim').hidden = true;
+    const box = $('camErro');
+    box.hidden = false;
+    box.innerHTML = `<b></b><p></p><button class="cam-cancel" type="button">Seguir sem selfie</button>`;
+    box.querySelector('b').textContent = titulo;
+    box.querySelector('p').textContent = texto;
+    return new Promise((resolve) => {
+      box.querySelector('button').addEventListener('click', () => {
+        box.hidden = true; $('camFim').hidden = false;
+        pararCamera(); resolve();
+      }, { once: true });
+    });
+  }
+
+  function capturarFrame() {
+    const v = $('camVideo');
+    const c = document.createElement('canvas');
+    const lado = Math.min(v.videoWidth, v.videoHeight) || 240;
+    c.width = 150; c.height = 190;
+    const ctx = c.getContext('2d');
+    const sx = (v.videoWidth - lado) / 2, sy = (v.videoHeight - lado * 1.2) / 2;
+    ctx.drawImage(v, Math.max(0, sx), Math.max(0, sy), lado, Math.min(lado * 1.2, v.videoHeight), 0, 0, 150, 190);
+    return c.toDataURL('image/jpeg', 0.7);
+  }
+
+  // sleep que responde ao cancelamento em ~80ms, não em 1s
+  async function esperaCancelavel(ms) {
+    const passo = 80;
+    for (let t = 0; t < ms; t += passo) {
+      if (cancelado) return;
+      await espera(passo);
+    }
+  }
+
+  async function contagem(seg) {
+    const el = $('camCont');
+    if (reduz) { el.textContent = ''; await espera(400); return; }
+    for (let n = seg; n > 0 && !cancelado; n--) { el.textContent = n; await esperaCancelavel(1000); }
+    el.textContent = '';
+  }
+
+  // devolve {ok, frames[]} — nunca rejeita; se falhar, a demo segue sem selfie
+  async function fluxoSelfie() {
+    cancelado = false;
+    const frames = [];
+
+    if (!window.isSecureContext || !navigator.mediaDevices?.getUserMedia) {
+      cam.classList.add('on');
+      await mostrarErro('Câmera indisponível', 'Este navegador não expõe a câmera aqui. A demonstração segue sem a selfie.');
+      return { ok: false, frames };
+    }
+
+    cam.classList.add('on');
+    $('camErro').hidden = true; $('camFim').hidden = false;
+    $('camPasso').textContent = 'Passo 1 de 2';
+    $('camInst').textContent = 'Pedindo acesso à câmera…';
+    $('camCont').textContent = '';
+
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
+    } catch (e) {
+      const negou = e && (e.name === 'NotAllowedError' || e.name === 'SecurityError');
+      const semCam = e && (e.name === 'NotFoundError' || e.name === 'OverconstrainedError');
+      await mostrarErro(
+        negou ? 'Permissão negada' : semCam ? 'Nenhuma câmera encontrada' : 'Não deu pra abrir a câmera',
+        negou ? 'Sem problema — no app real o condomínio decide se a selfie é obrigatória. A demonstração segue sem ela.'
+              : 'A demonstração segue sem a selfie.'
+      );
+      return { ok: false, frames };
+    }
+
+    const v = $('camVideo');
+    v.srcObject = stream;
+    try { await v.play(); } catch (_) {}
+    if (cancelado) { pararCamera(); return { ok: false, frames }; }
+
+    // passo 1 — frontal
+    $('camInst').textContent = 'Alinhe o rosto no oval';
+    await contagem(3);
+    if (cancelado) { pararCamera(); return { ok: false, frames }; }
+    frames.push(capturarFrame());
+    cam.classList.add('capturou');
+    await espera(reduz ? 0 : 320);
+    cam.classList.remove('capturou');
+
+    // passo 2 — desafio de liveness (no app real o lado vem do backend)
+    const lado = Math.random() < 0.5 ? 'esquerda' : 'direita';
+    $('camPasso').textContent = 'Passo 2 de 2';
+    $('camInst').textContent = `Agora vire o rosto para a ${lado}`;
+    await contagem(3);
+    if (cancelado) { pararCamera(); return { ok: false, frames }; }
+    frames.push(capturarFrame());
+    cam.classList.add('capturou');
+    await espera(reduz ? 0 : 380);
+
+    pararCamera();
+    return { ok: true, frames };
+  }
+
+  $('camCancel').addEventListener('click', () => { cancelado = true; pararCamera(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && cam.classList.contains('on')) { cancelado = true; pararCamera(); }
+  });
+
+  /* ================= BATIDA ================= */
+  async function bater() {
     if (i >= CICLO.length) return;
+
+    btn.disabled = true;
+
+    const exigida = $('cfgSelfie').checked;
+    let selfie = { ok: false, frames: [] };
+    if (exigida) {
+      btn.textContent = 'Confirmando identidade…';
+      selfie = await fluxoSelfie();
+      if (cancelado) { btn.disabled = false; btn.textContent = `Bater ${CICLO[i].tipo}`; return; }
+    }
+
     const at = CICLO[i];
     const agora = new Date();
     const hora = `${p2(agora.getHours())}:${p2(agora.getMinutes())}`;
 
-    btn.disabled = true;
     btn.textContent = 'Registrando…';
 
     setTimeout(() => {
+      // selo de selfie/liveness no comprovante
+      $('fSelfie').textContent = selfie.ok ? 'OK' : exigida ? 'NÃO CAPTURADA' : 'NÃO EXIGIDA';
+      $('fLive').textContent = selfie.ok ? 'ATIVO' : exigida ? 'FALHOU' : '—';
+      const thumbs = $('fThumbs');
+      thumbs.innerHTML = '';
+      if (selfie.frames.length) {
+        thumbs.classList.remove('vazio');
+        selfie.frames.forEach((src, n) => {
+          const img = document.createElement('img');
+          img.src = src; img.alt = `Frame ${n + 1} da prova de vida`;
+          thumbs.appendChild(img);
+        });
+      } else thumbs.classList.add('vazio');
+
       nsr += 1;
 
       if (i === 0) pills.innerHTML = '';
