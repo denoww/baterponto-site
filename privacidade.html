@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Política de Privacidade — baterponto</title>
+<meta name="description" content="Como o baterponto coleta, usa e protege os dados do funcionário: credenciais, localização, selfie/prova de vida e registros de ponto." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://baterponto.app/privacidade" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Azeret+Mono:wght@500&family=Bricolage+Grotesque:opsz,wght@12..96,800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --tinta:#1B1424; --roxo:#7C3AED; --roxo-esc:#6D28D9; --papel:#F7F5F9;
+    --cinza:#6B6478; --linha:rgba(27,20,36,.12); --max:760px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--papel);color:var(--tinta);font-family:'Archivo',system-ui,sans-serif;
+       -webkit-font-smoothing:antialiased;line-height:1.65}
+  a{color:var(--roxo-esc);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  header.nav{border-bottom:1px solid var(--linha);background:rgba(247,245,249,.85);backdrop-filter:blur(12px)}
+  .nav-in{max-width:var(--max);margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.02em}
+  .brand img{width:28px;height:28px;border-radius:8px;display:block}
+  .brand .tld{color:var(--roxo)}
+
+  main{padding:56px 0 80px}
+  .eyebrow{font-family:'Azeret Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.16em;
+           text-transform:uppercase;color:var(--roxo-esc)}
+  h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(30px,5vw,42px);
+     letter-spacing:-.025em;line-height:1.05;margin-top:14px}
+  .atualizado{margin-top:14px;font-size:13.5px;color:var(--cinza);font-family:'Azeret Mono',monospace}
+  .intro{margin-top:26px;font-size:16.5px;color:var(--tinta)}
+  h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.02em;
+     margin:44px 0 0;padding-top:26px;border-top:1px solid var(--linha)}
+  h3{font-size:16px;font-weight:700;margin-top:22px}
+  p{margin-top:14px;color:var(--tinta)}
+  p.sub{color:var(--cinza);font-size:15px}
+  ul{margin:14px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+  li{padding-left:20px;position:relative;color:var(--tinta)}
+  li::before{content:"";position:absolute;left:0;top:10px;width:7px;height:7px;border-radius:2px;background:var(--roxo)}
+  li b{font-weight:600}
+  .card{background:#fff;border:1px solid var(--linha);border-radius:14px;padding:22px 24px;margin-top:16px}
+  .mono{font-family:'Azeret Mono',monospace}
+  footer{border-top:1px solid var(--linha);padding:32px 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--cinza);font-size:13.5px}
+  @media(max-width:600px){ .wrap,.nav-in{padding:0 18px} main{padding:40px 0 60px} }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="/"><img src="/assets/brand-mark.png" width="28" height="28" alt="" /><span>baterponto<span class="tld">.app</span></span></a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <span class="eyebrow">Legal</span>
+    <h1>Política de Privacidade</h1>
+    <div class="atualizado">Vigente desde 10 de julho de 2026</div>
+
+    <p class="intro">
+      Esta política explica quais dados o aplicativo <b>baterponto</b> coleta, por que coleta, como
+      são usados e protegidos, e quais são os seus direitos. Ela vale para o app do funcionário
+      (Android e iOS) que registra o ponto eletrônico.
+    </p>
+
+    <h2>Quem é responsável pelos seus dados</h2>
+    <p>
+      O baterponto é usado por empresas para o registro de jornada dos seus funcionários. Nesse
+      arranjo, a <b>empresa em que você trabalha é a controladora</b> dos dados (decide por que e como
+      eles são tratados) e o baterponto atua como <b>operador</b>, tratando os dados em nome dela para
+      viabilizar o registro de ponto. Dúvidas sobre a finalidade do tratamento na sua empresa devem
+      ser encaminhadas ao RH ou gestor dela.
+    </p>
+
+    <h2>Dados que coletamos</h2>
+    <p class="sub">Coletamos apenas o necessário para registrar o ponto e comprovar quem bateu, quando e onde:</p>
+    <ul>
+      <li><b>Dados de acesso</b> — e-mail e senha corporativos, usados só para autenticar você no sistema. A senha é guardada de forma segura no armazenamento protegido do próprio aparelho (keychain), não em nossos servidores.</li>
+      <li><b>Localização (GPS)</b> — coletada <b>apenas no momento da batida</b>, e somente quando a empresa exige verificação de local (geofence). Não há rastreamento contínuo nem em segundo plano.</li>
+      <li><b>Selfie e prova de vida</b> — foto do rosto no momento da batida, capturada apenas quando a empresa exige, para confirmar a identidade de quem registra o ponto (REP-P).</li>
+      <li><b>Registros de ponto</b> — data, hora, tipo da batida (entrada, intervalo, saída), NSR (número sequencial de registro) e, quando aplicável, o projeto/centro de custo apontado.</li>
+      <li><b>Dados do dispositivo</b> — informações técnicas mínimas (modelo, sistema, versão do app) para funcionamento, diagnóstico e segurança.</li>
+    </ul>
+    <div class="card">
+      <p style="margin-top:0"><b>O que NÃO fazemos:</b> não exibimos anúncios, não vendemos seus dados,
+      não usamos suas informações para publicidade e não coletamos sua localização em segundo plano.</p>
+    </div>
+
+    <h2>Para que usamos</h2>
+    <ul>
+      <li>Registrar o ponto e gerar o comprovante (NSR) de forma <b>imutável</b>, como exige a legislação trabalhista.</li>
+      <li>Confirmar, quando exigido pela empresa, que foi você quem bateu (selfie/prova de vida) e que estava no local (geofence).</li>
+      <li>Mostrar a você seu espelho de ponto: horas trabalhadas, saldo do banco, atrasos e faltas.</li>
+      <li>Manter a segurança do sistema e prevenir fraudes.</li>
+    </ul>
+
+    <h2>Base legal</h2>
+    <p>
+      O tratamento se apoia, conforme o caso, no <b>cumprimento de obrigação legal e regulatória</b>
+      (registro de jornada), na <b>execução do contrato de trabalho</b> e no <b>legítimo interesse</b>
+      de comprovar o registro com segurança, nos termos da Lei Geral de Proteção de Dados (LGPD — Lei
+      nº 13.709/2018). A definição da base aplicável cabe à empresa controladora.
+    </p>
+
+    <h2>Com quem compartilhamos</h2>
+    <p>
+      Os dados de ponto são disponibilizados à <b>empresa em que você trabalha</b> (RH/gestor), que é a
+      controladora. Podemos usar provedores de infraestrutura (por exemplo, armazenamento em nuvem das
+      imagens de selfie) que tratam os dados apenas sob nossas instruções e com medidas de segurança
+      adequadas. <b>Não vendemos nem cedemos seus dados a terceiros</b> para fins próprios deles.
+    </p>
+
+    <h2>Armazenamento e segurança</h2>
+    <p>
+      A senha fica no armazenamento seguro do aparelho. As comunicações com o servidor usam conexão
+      criptografada (HTTPS). Os registros de ponto são <b>imutáveis</b> — nem o funcionário nem o gestor
+      apagam uma batida; correções existem apenas como pedido registrado e aprovado, preservando o
+      histórico.
+    </p>
+
+    <h2>Por quanto tempo guardamos</h2>
+    <p>
+      Os registros de ponto são mantidos pelo prazo exigido pela legislação trabalhista e pela empresa
+      controladora. Imagens de selfie são retidas pelo período necessário à finalidade de comprovação,
+      conforme a política da empresa.
+    </p>
+
+    <h2>Seus direitos</h2>
+    <p class="sub">Pela LGPD, você pode, a qualquer momento:</p>
+    <ul>
+      <li>Confirmar a existência de tratamento e <b>acessar</b> seus dados.</li>
+      <li>Corrigir dados incompletos ou desatualizados — batidas se corrigem via pedido ao gestor.</li>
+      <li>Solicitar informação sobre com quem os dados são compartilhados.</li>
+      <li>Solicitar a eliminação de dados tratados com base no consentimento, respeitadas as obrigações legais de guarda dos registros de jornada.</li>
+    </ul>
+    <p>
+      Como a empresa em que você trabalha é a controladora, os pedidos sobre seus dados devem ser
+      dirigidos primeiro a ela (RH/gestor). Podemos apoiar a empresa no atendimento.
+    </p>
+
+    <h2>Permissões do aparelho</h2>
+    <ul>
+      <li><b>Câmera</b> — só é acionada na batida com selfie/prova de vida, quando a empresa exige.</li>
+      <li><b>Localização</b> — só é lida no instante da batida, quando há geofence. Você pode negar; nesse caso, se a empresa exigir a localização, a batida por esse aparelho pode não ser concluída.</li>
+    </ul>
+
+    <h2>Alterações nesta política</h2>
+    <p>
+      Podemos atualizar esta política para refletir mudanças no app ou na legislação. A data de vigência
+      no topo indica a última atualização.
+    </p>
+
+    <h2>Contato</h2>
+    <p>
+      Dúvidas sobre esta política ou sobre o tratamento dos seus dados no baterponto:
+      <a href="https://wa.me/5562996701278?text=Ol%C3%A1%21%20Tenho%20uma%20d%C3%BAvida%20sobre%20privacidade%20no%20baterponto." target="_blank" rel="noopener">fale com a gente no WhatsApp</a>.
+    </p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 baterponto · ponto eletrônico para empresas</span>
+    <a href="/">← Voltar ao site</a>
+  </div>
+</footer>
+</body>
+</html>
