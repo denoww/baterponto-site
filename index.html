@@ -9,7 +9,8 @@
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://baterponto.app/" />
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%238E2DDB'/><path d='M50 24v28l18 10' stroke='white' stroke-width='9' stroke-linecap='round' fill='none'/></svg>" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="baterponto — o ponto bate no celular, a prova sai na hora" />
@@ -30,9 +31,10 @@
 <style>
   :root{
     --tinta:#1B1424;
-    --roxo:#8E2DDB;
-    --roxo-esc:#6A1FA8;
-    --roxo-leve:#F1E7FB;
+    /* roxo oficial "Ponto Eletrônico" (manual de marca, seed M3 #7C3AED) */
+    --roxo:#7C3AED;
+    --roxo-esc:#6D28D9;
+    --roxo-leve:#EDE7FD;
     --papel:#F7F5F9;
     --registro:#1E9E63;
     --cinza:#6B6478;
@@ -62,8 +64,8 @@
        backdrop-filter:blur(12px);border-bottom:1px solid var(--linha)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;height:70px}
   .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:-.02em}
-  .brand-mark{width:28px;height:28px;border-radius:8px;background:var(--roxo);display:grid;place-items:center;flex-shrink:0}
-  .brand-mark svg{width:16px;height:16px}
+  /* marca oficial (símbolo velocímetro) — gerada de assets/flavors/ponto por tool/gen_brand.py */
+  .brand-mark{width:30px;height:30px;border-radius:8px;flex-shrink:0;display:block}
   .brand .tld{color:var(--roxo)}
   .nav-links{display:flex;gap:28px;align-items:center}
   .nav-links a{font-size:14.5px;color:var(--cinza);transition:color .18s}
@@ -418,7 +420,7 @@
 <header class="nav">
   <div class="wrap nav-in">
     <a class="brand" href="#topo">
-      <span class="brand-mark"><svg viewBox="0 0 100 100"><path d="M50 24v28l18 10" stroke="#fff" stroke-width="10" stroke-linecap="round" fill="none"/></svg></span>
+      <img class="brand-mark" src="/assets/brand-mark.png" width="30" height="30" alt="" />
       <span>baterponto<span class="tld">.app</span></span>
     </a>
     <nav class="nav-links">
@@ -842,7 +844,7 @@
 <footer class="ft">
   <div class="wrap ft-in">
     <a class="brand" href="#topo">
-      <span class="brand-mark"><svg viewBox="0 0 100 100"><path d="M50 24v28l18 10" stroke="#fff" stroke-width="10" stroke-linecap="round" fill="none"/></svg></span>
+      <img class="brand-mark" src="/assets/brand-mark.png" width="30" height="30" alt="" />
       <span>baterponto<span class="tld">.app</span></span>
     </a>
     <small>© 2026 baterponto · ponto eletrônico para empresas</small>
