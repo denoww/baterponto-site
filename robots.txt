@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://baterponto.app/sitemap.xml
+Sitemap: https://www.baterponto.app/sitemap.xml
