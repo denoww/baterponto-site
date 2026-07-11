@@ -453,15 +453,18 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px)}
   position:absolute;left:22px;bottom:20px;z-index:2;color:#fff;
   font-size:19px;font-weight:600;letter-spacing:-.02em;
 }
+/* No mobile isto era um carrossel horizontal (68vw + scroll-snap x mandatory).
+   Os cards têm ~600px de altura, então o dedo subia SEMPRE em cima de um contêiner
+   de scroll horizontal: o Chrome no Android ficava decidindo entre rolar a página
+   ou o carrossel e o gesto diagonal prendia no snap — a página "travava".
+   São 4 fotos. Grade 2x2 resolve, sem gesto concorrente. */
 @media(max-width:900px){
-  .espectro{
-    grid-template-columns:repeat(4,68vw);gap:14px;
-    overflow-x:auto;scroll-snap-type:x mandatory;
-    padding:0 24px;margin-left:-24px;margin-right:-24px;
-    scrollbar-width:none;
-  }
-  .espectro::-webkit-scrollbar{display:none}
-  .setor{scroll-snap-align:center}
+  .espectro{grid-template-columns:repeat(2,1fr);gap:12px}
+  .setor span{left:14px;bottom:12px;font-size:16px}
+}
+@media(max-width:420px){
+  .espectro{gap:10px}
+  .setor span{font-size:15px}
 }
 
 /* ---------- ESPELHO ---------- */
