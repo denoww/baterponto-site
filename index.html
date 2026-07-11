@@ -345,10 +345,12 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px)}
 .fita .selo{text-align:center;padding-top:13px;color:var(--verde);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase}
 
 /* ---------- FAIXA FULL-BLEED ---------- */
-.faixa{position:relative;width:100%;height:clamp(420px,58vw,660px);overflow:hidden;background:#0b0a0e}
-/* 12% no eixo Y: a cabeça do sujeito está colada no topo do arquivo —
-   com "center" o corte decapita o retrato. */
-.faixa img{width:100%;height:100%;object-fit:cover;object-position:62% 12%}
+/* Alta o bastante pra caber cabeça E celular: o sujeito ocupa ~816px na largura
+   máxima, e uma banda de 660px decapitava ou cortava o gesto do toque. */
+.faixa{position:relative;width:100%;height:clamp(460px,56vw,800px);overflow:hidden;background:#0b0a0e}
+/* 30% no eixo Y: enquadra do topo da cabeça até o polegar na tela. Mais alto
+   decapita; mais baixo corta o gesto — que é o assunto da foto. */
+.faixa img{width:100%;height:100%;object-fit:cover;object-position:62% 30%}
 .faixa::after{
   content:"";position:absolute;inset:0;
   background:linear-gradient(95deg, rgba(11,10,14,.95) 0%, rgba(11,10,14,.8) 32%, rgba(11,10,14,.1) 60%, transparent 75%);
