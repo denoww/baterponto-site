@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
 """Conteúdo do livreto do baterponto — 95% das mudanças acontecem AQUI.
 
+VOCÊ SÓ PRECISA EDITAR ESTE ARQUIVO. O HTML e o PDF se regeneram sozinhos no CI
+(.github/workflows/livreto.yml) assim que você der push — o PDF é um ESPELHO
+automático, como manda o roadmap do livreto ("sem humano"). Não precisa rodar
+build.py nem build_pdf.sh na mão; se rodar, o CI só confirma que já estava em dia.
+O CI ainda abre o PDF e barra o build se alguma página sair EM BRANCO (a falha
+clássica do @media print, que quebra em silêncio).
+
 Fonte da verdade factual, nesta ordem de precedência:
   1. o site https://baterponto.app (repo deste arquivo) — é o mais novo
   2. ~/workspace/foundry/projeto/packages/spinoffs/baterponto/pack.yml
