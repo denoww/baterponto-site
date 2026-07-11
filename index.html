@@ -357,11 +357,16 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px)}
 .faixa-txt .wrap{width:100%}
 .faixa-txt h2{color:#fff;max-width:14ch;text-wrap:balance}
 .faixa-txt p{margin-top:20px;color:var(--claro-2);max-width:34ch;font-size:clamp(16px,1.7vw,20px);line-height:1.5}
+/* Mesma regra do hero: no mobile a foto NÃO fica de fundo lavado atrás do texto.
+   column-reverse põe o texto em cima (campo escuro sólido) e a foto inteira
+   embaixo, com opacidade cheia e sem véu. */
 @media(max-width:820px){
-  .faixa{height:auto;min-height:520px}
-  .faixa img{position:absolute;inset:0;object-position:66% center;opacity:.42}
-  .faixa::after{background:linear-gradient(180deg, rgba(11,10,14,.6), rgba(11,10,14,.92))}
-  .faixa-txt{position:relative;padding:110px 0}
+  .faixa{height:auto;display:flex;flex-direction:column-reverse;align-items:stretch}
+  .faixa::after{display:none}
+  .faixa img{position:relative;width:100%;height:min(64vw,340px);object-position:62% 10%;opacity:1}
+  .faixa-txt{position:relative;display:block;padding:76px 0 68px}
+  .faixa-txt h2{max-width:none}
+  .faixa-txt p{max-width:none}
 }
 
 /* ---------- NSR / PROVA (seção preta) ---------- */
