@@ -6,9 +6,12 @@ Fonte da verdade factual, nesta ordem de precedência:
   2. ~/workspace/foundry/projeto/packages/spinoffs/baterponto/pack.yml
   3. ~/workspace/baterponto (app Flutter + backend)
 
-DIVERGÊNCIAS CONHECIDAS (o site venceu, o pack está velho):
-  - grátis até **2** pessoas (o pack.yml ainda diz 3; commit 53ff8d5 baixou pra 2)
-  - roxo de marca **#7C3AED** (o pack.yml ainda diz #8E2DDB; commit cc1e7a2 fixou 7C3AED)
+DIVERGÊNCIAS: nenhuma no momento. O pack estava velho (dizia "grátis até 3 pessoas"
+e roxo #8E2DDB) e foi corrigido no foundry (commit 0be08ef) — hoje os dois batem:
+grátis até **2** pessoas, roxo **#7C3AED**.
+
+Se um dia divergirem de novo: o SITE vence, e o pack se corrige no mesmo dia — ele
+alimenta ads/carrossel/outreach, então preço errado ali não fica parado, ele SAI.
 
 REGRAS DE COPY (do pack.yml → comunicacao):
   - PROIBIDO prova social: nada de "X empresas", "Y mil funcionários", "99% de acerto".
