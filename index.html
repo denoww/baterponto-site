@@ -165,14 +165,15 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px)}
   position:relative;min-height:min(92vh,860px);display:flex;align-items:center;
   background:#3B0FA0;overflow:hidden;
 }
+/* 88%: na pose nova o braço sobe ESTENDIDO e o celular cai bem no meio do H1.
+   Empurrar o enquadramento pra direita tira o aparelho de trás do texto. */
 .hero-bg{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% center;
-  /* o retrato entra do lado direito; o campo roxo da foto continua no fundo da seção */
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:88% center;
 }
 /* véu que garante contraste do texto sobre a foto em qualquer viewport */
 .hero::after{
   content:"";position:absolute;inset:0;
-  background:linear-gradient(100deg, rgba(30,4,74,.94) 0%, rgba(45,10,105,.78) 34%, rgba(59,15,160,.12) 62%, transparent 78%);
+  background:linear-gradient(100deg, rgba(30,4,74,.96) 0%, rgba(45,10,105,.86) 40%, rgba(59,15,160,.2) 66%, transparent 80%);
 }
 .hero-in{position:relative;z-index:2;padding:120px 0 130px;width:100%}
 .hero-txt{max-width:640px}
@@ -344,32 +345,19 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px)}
 .fita .rows{padding:12px 0}
 .fita .selo{text-align:center;padding-top:13px;color:var(--verde);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase}
 
-/* ---------- FAIXA FULL-BLEED ---------- */
-/* Alta o bastante pra caber cabeça E celular: o sujeito ocupa ~816px na largura
-   máxima, e uma banda de 660px decapitava ou cortava o gesto do toque. */
-.faixa{position:relative;width:100%;height:clamp(460px,56vw,800px);overflow:hidden;background:#0b0a0e}
-/* 30% no eixo Y: enquadra do topo da cabeça até o polegar na tela. Mais alto
-   decapita; mais baixo corta o gesto — que é o assunto da foto. */
-.faixa img{width:100%;height:100%;object-fit:cover;object-position:62% 30%}
-.faixa::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(95deg, rgba(11,10,14,.95) 0%, rgba(11,10,14,.8) 32%, rgba(11,10,14,.1) 60%, transparent 75%);
-}
-.faixa-txt{position:absolute;inset:0;z-index:2;display:flex;align-items:center}
-.faixa-txt .wrap{width:100%}
-.faixa-txt h2{color:#fff;max-width:14ch;text-wrap:balance}
-.faixa-txt p{margin-top:20px;color:var(--claro-2);max-width:34ch;font-size:clamp(16px,1.7vw,20px);line-height:1.5}
-/* Mesma regra do hero: no mobile a foto NÃO fica de fundo lavado atrás do texto.
-   column-reverse põe o texto em cima (campo escuro sólido) e a foto inteira
-   embaixo, com opacidade cheia e sem véu. */
-@media(max-width:820px){
-  .faixa{height:auto;display:flex;flex-direction:column-reverse;align-items:stretch}
-  .faixa::after{display:none}
-  .faixa img{position:relative;width:100%;height:min(64vw,340px);object-position:62% 10%;opacity:1}
-  .faixa-txt{position:relative;display:block;padding:76px 0 68px}
-  .faixa-txt h2{max-width:none}
-  .faixa-txt p{max-width:none}
-}
+/* ---------- FAIXA: O DÍPTICO ----------
+   A imagem agora tem DOIS quadros (a pessoa batendo + a tela reconhecendo), e é
+   ela que conta a história. Por isso o texto saiu de cima da foto: sobreposição
+   taparia justamente a tela do app, que é o que vende. Título em cima, imagem
+   inteira embaixo — e nada de object-fit:cover recortando um dos quadros. */
+.faixa{position:relative;width:100%;background:#0b0a0e;padding:clamp(76px,9vw,120px) 0 0;overflow:hidden}
+.faixa-txt{text-align:center;padding-bottom:clamp(44px,5vw,64px)}
+.faixa-txt h2{color:#fff;max-width:20ch;margin:0 auto;text-wrap:balance}
+.faixa-txt .eyebrow{color:var(--roxo-vivo)}
+.faixa-txt p{margin:20px auto 0;color:var(--claro-2);max-width:48ch;font-size:clamp(17px,1.8vw,21px);line-height:1.45}
+.faixa-fig{margin:0;width:100%;max-width:1400px;margin-inline:auto;padding:0 24px}
+.faixa-fig img{width:100%;height:auto;display:block;border-radius:24px 24px 0 0}
+@media(max-width:600px){ .faixa-fig{padding:0 16px} }
 
 /* ---------- NSR / PROVA (seção preta) ---------- */
 .prova-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
@@ -423,6 +411,20 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px)}
 .tile-foto::after{
   content:"";position:absolute;inset:0;
   background:linear-gradient(transparent 38%, rgba(0,0,0,.72));
+}
+/* Tile de díptico: o véu vem da ESQUERDA, não de baixo. Um véu inferior cairia
+   exatamente sobre o comprovante (NSR) do quadro 2 — que é o que a peça vende.
+   Aqui ele escurece só o lado da foto e deixa a tela do app intacta. */
+.tile-dip::after{
+  background:linear-gradient(100deg, rgba(0,0,0,.86) 0%, rgba(0,0,0,.66) 34%, rgba(0,0,0,.12) 52%, transparent 62%);
+}
+.tile-dip .tile-txt{max-width:56%}
+@media(max-width:640px){
+  /* no celular o díptico fica pequeno demais pra ler a tela: mostra só a foto,
+     e o quadro 2 continua na seção "Prova de vida" em tamanho cheio */
+  .tile-dip img{object-position:left center;width:200%}
+  .tile-dip::after{background:linear-gradient(transparent 38%, rgba(0,0,0,.72))}
+  .tile-dip .tile-txt{max-width:100%}
 }
 .tile-foto .tile-txt{position:relative;z-index:2;color:#fff}
 .tile-foto .tile-txt p{color:rgba(255,255,255,.82)}
@@ -789,17 +791,19 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px)}
   </div>
 </section>
 
-<!-- ============ FAIXA: o gesto ============ -->
-<figure class="faixa">
-  <img src="/assets/faixa.jpg" width="1600" height="1067" loading="lazy" decoding="async"
-       alt="Close do funcionário tocando a tela do celular; a tela ilumina os dedos de roxo." />
-  <figcaption class="faixa-txt">
-    <div class="wrap-larg">
-      <h2 class="t-sec">O ponto inteiro cabe num toque.</h2>
-      <p>Sem relógio na parede. Sem cartão. Sem planilha no fim do mês.</p>
-    </div>
-  </figcaption>
-</figure>
+<!-- ============ FAIXA: o díptico — a batida e a prova ============ -->
+<section class="faixa" id="prova-viva">
+  <div class="wrap-larg faixa-txt reveal">
+    <span class="eyebrow">Prova de vida</span>
+    <h2 class="t-sec">Ela levanta o celular. O ponto reconhece o rosto.</h2>
+    <p>Não é uma foto que qualquer um repete: o app confere o rosto ao vivo e devolve
+       o NSR na mesma tela — a prova sai com ela.</p>
+  </div>
+  <figure class="faixa-fig reveal" style="--d:.15s">
+    <img src="/assets/faixa.jpg" width="1600" height="1067" loading="lazy" decoding="async"
+         alt="À esquerda, a funcionária ergue o celular para o reconhecimento facial. À direita, a tela do app mostra o rosto dela enquadrado no oval de prova de vida e o comprovante: entrada registrada às 09:24, NSR 000418." />
+  </figure>
+</section>
 
 <!-- ============ PROVA / NSR ============ -->
 <section class="sec sec-preta" id="prova">
@@ -868,9 +872,9 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px)}
     </div>
 
     <div class="bento">
-      <article class="tile tile-foto reveal">
+      <article class="tile tile-foto tile-dip reveal">
         <img src="/assets/bento-selfie.jpg" width="900" height="900" loading="lazy" decoding="async"
-             alt="Rosto de uma funcionária iluminado pela luz roxa da tela do celular durante a prova de vida." />
+             alt="À esquerda, o funcionário ergue o celular. À direita, a tela do app com o rosto dele enquadrado no oval e o comprovante com NSR." />
         <div class="tile-txt">
           <span class="tile-eyebrow">Prova de vida</span>
           <h3 class="t-tile">Selfie que não aceita foto de foto.</h3>
