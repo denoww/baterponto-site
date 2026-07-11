@@ -68,10 +68,17 @@ jobs:
       # O PDF é função pura do HTML + dos ASSETS que ele embute. Então a impressão
       # digital é do CONTEÚDO, não dos bytes do PDF. (Gatear só pelo HTML seria um bug:
       # trocar uma foto muda o PDF sem mudar uma linha de HTML.)
+      # O fingerprint tem que ser REPRODUTÍVEL fora do CI, senão ninguém consegue
+      # auditar. `cat assets/*` não era: a ordem do glob depende da COLAÇÃO do locale
+      # — em LC_ALL=C `faixa-mob.jpg` vem antes de `faixa.jpg` (o '-' < '.'), em
+      # en_US a pontuação é ignorada e a ordem inverte. Mesmo conteúdo, sha diferente.
+      # find + LC_ALL=C sort + sha por arquivo dá um valor estável em qualquer máquina
+      # (e ainda pega assets em subpasta, que o glob raso deixaria passar).
       - name: Fingerprint do conteúdo — precisa mesmo refazer o PDF?
         id: fp
         run: |
-          NOVO=$(cat livreto/index.html assets/* | sha256sum | cut -c1-16)
+          NOVO=$(find livreto/index.html assets -type f | LC_ALL=C sort \
+                 | xargs sha256sum | sha256sum | cut -c1-16)
           VELHO=$(cat livreto/.espelho.sha 2>/dev/null || echo "nenhum")
           echo "conteudo antigo=$VELHO novo=$NOVO"
           if [ "$NOVO" = "$VELHO" ] && [ "${{ github.event.inputs.force }}" != "true" ]; then
