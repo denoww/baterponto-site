@@ -90,6 +90,15 @@ convert "$SRC/sf-faixa.png" -resize 800x1067^ -gravity center -extent 800x1067 "
 convert "$TMP/l.png" "$TMP/tela-sf-faixa.png" +append $J "$OUT/faixa.jpg"
 echo "[dip] faixa.jpg"
 
+# ---------- o mesmo díptico EMPILHADO, pro celular ----------
+# Lado a lado num viewport de 412px, cada quadro fica com ~200px e a tela do app
+# vira um borrão — some justamente o NSR, que é o que a peça vende. Empilhado, o
+# aparelho ocupa a largura inteira e volta a ser legível. Servido via <picture>.
+NOME=Marina; tela sf-faixa 2b0d63 12042e 900x1000
+convert "$SRC/sf-faixa.png" -resize 900x620^ -gravity north -extent 900x620 "$TMP/t.png"
+convert "$TMP/t.png" "$TMP/tela-sf-faixa.png" -append $J "$OUT/faixa-mob.jpg"
+echo "[dip] faixa-mob.jpg (empilhado)"
+
 # ---------- díptico 2: o TILE da prova de vida (900x900) ----------
 recorta_rosto sf-tile
 NOME=Diego;  tela sf-tile 3b1180 160a33 450x900
