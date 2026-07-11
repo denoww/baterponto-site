@@ -30,6 +30,11 @@ on:
       - 'tools/**'
       - 'assets/**'
   workflow_dispatch:
+    inputs:
+      force:
+        description: 'Refazer o PDF mesmo sem mudança de conteúdo'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -52,15 +57,40 @@ jobs:
           fi
           google-chrome --version
 
-      - name: Gera o HTML e o PDF
+      - name: Gera o HTML
+        run: python3 livreto/build.py
+
+      # O PDF do Chrome NÃO é determinístico: ele carimba CreationDate/ModDate, então
+      # dois builds do MESMO conteúdo dão bytes diferentes. Sem este gate, o CI
+      # commitaria 1,5 MB de binário a CADA push — para sempre, sem nada ter mudado —
+      # inchando o repo e fazendo "o PDF mudou" não significar mais nada no diff.
+      #
+      # O PDF é função pura do HTML + dos ASSETS que ele embute. Então a impressão
+      # digital é do CONTEÚDO, não dos bytes do PDF. (Gatear só pelo HTML seria um bug:
+      # trocar uma foto muda o PDF sem mudar uma linha de HTML.)
+      - name: Fingerprint do conteúdo — precisa mesmo refazer o PDF?
+        id: fp
         run: |
-          python3 livreto/build.py
-          bash livreto/build_pdf.sh
+          NOVO=$(cat livreto/index.html assets/* | sha256sum | cut -c1-16)
+          VELHO=$(cat livreto/.espelho.sha 2>/dev/null || echo "nenhum")
+          echo "conteudo antigo=$VELHO novo=$NOVO"
+          if [ "$NOVO" = "$VELHO" ] && [ "${{ github.event.inputs.force }}" != "true" ]; then
+            echo "refazer=nao" >> $GITHUB_OUTPUT
+            echo "espelho já está em dia — PDF não precisa ser refeito"
+          else
+            echo "refazer=sim" >> $GITHUB_OUTPUT
+            echo "$NOVO" > livreto/.espelho.sha
+          fi
+
+      - name: Gera o PDF
+        if: steps.fp.outputs.refazer == 'sim'
+        run: bash livreto/build_pdf.sh
 
       # As três travas do print CSS (do playbook do SeuCondomínio) quebram em
       # SILÊNCIO: sem `.rev{opacity:1}` o PDF sai EM BRANCO e ninguém percebe até
       # o cliente abrir. Então o CI abre o PDF e confere.
       - name: Confere que o PDF não saiu em branco
+        if: steps.fp.outputs.refazer == 'sim'
         run: |
           # imagemagick NÃO vem no runner ubuntu-24.04 (o `identify` some e o passo
           # morre com exit 127) — instalar junto com o poppler.
@@ -81,14 +111,14 @@ jobs:
             awk -v sd="$SD" 'BEGIN{ if (sd+0 < 1000) { print "::error::página em branco — o @media print quebrou (.rev{opacity:1})"; exit 1 } }'
           done
 
-      - name: Commita o espelho, se mudou
+      - name: Commita o espelho
         run: |
-          if git diff --quiet -- livreto/index.html livreto.pdf; then
-            echo "espelho já estava em dia — nada a fazer"
+          if git diff --quiet -- livreto/index.html livreto.pdf livreto/.espelho.sha; then
+            echo "nada mudou — sem commit"
             exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add livreto/index.html livreto.pdf
+          git add livreto/index.html livreto.pdf livreto/.espelho.sha
           git commit -m "chore(livreto): regenera espelho HTML+PDF [skip ci]"
           git push
