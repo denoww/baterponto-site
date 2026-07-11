@@ -62,7 +62,9 @@ jobs:
       # o cliente abrir. Então o CI abre o PDF e confere.
       - name: Confere que o PDF não saiu em branco
         run: |
-          sudo apt-get install -y -qq poppler-utils
+          # imagemagick NÃO vem no runner ubuntu-24.04 (o `identify` some e o passo
+          # morre com exit 127) — instalar junto com o poppler.
+          sudo apt-get install -y -qq poppler-utils imagemagick
           PAGS=$(pdfinfo livreto.pdf | awk '/^Pages:/{print $2}')
           echo "páginas: $PAGS"
           [ "$PAGS" -ge 8 ] || { echo "::error::PDF com só $PAGS páginas — build quebrado"; exit 1; }
