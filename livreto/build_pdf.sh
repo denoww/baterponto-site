@@ -3,10 +3,17 @@
 #
 #   bash livreto/build_pdf.sh
 #
-# Por que aqui e não em runtime: o SeuCondomínio gera o PDF sob demanda (Gotenberg,
-# cacheado pelo hash do HTML). Este site é estático (GitHub Pages, sem runtime), então
-# o PDF é um artefato de build — commitado. Consequência: ao mudar o conteúdo é preciso
-# rodar os DOIS (`build.py` e depois este). Se esquecer, o PDF fica velho em silêncio.
+# VOCÊ NÃO PRECISA RODAR ISTO NA MÃO. O CI (.github/workflows/livreto.yml) regenera
+# HTML+PDF a cada push que toca a fonte e commita o espelho — é a "regra de ouro" do
+# roadmap do livreto: espelho automático, sem humano.
+#
+# Este script existe pra (a) o CI chamar e (b) você conferir o PDF localmente antes
+# de dar push. O que ele produzir local pode diferir em bytes do que o CI produz
+# (versão de Chrome diferente) — quem manda é o CI.
+#
+# Por que CI e não runtime: o SeuCondomínio gera sob demanda (Gotenberg, cache por
+# hash do HTML), mas isso exige um servidor. Este site é estático (GitHub Pages, sem
+# runtime), então o espelho acontece no CI.
 #
 # --print-to-pdf respeita o `@media print` (as 3 travas estão em build.py > CSS).
 # --no-pdf-header-footer tira o "about:blank / data" que o Chrome carimba por padrão.
