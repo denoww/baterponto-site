@@ -469,6 +469,28 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px)}
   .setor span{font-size:15px}
 }
 
+/* ---------- KIOSK ----------
+   Seção preta: a foto do kiosk tem campo roxo saturado, e o preto quebra o
+   ritmo branco→névoa antes do espelho. Mesma grade do .esp. */
+.kiosk{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+@media(max-width:940px){ .kiosk{grid-template-columns:1fr;gap:44px} }
+.kiosk-foto{width:100%;border-radius:28px;overflow:hidden;aspect-ratio:4/5}
+/* recorte 4/5 sobre a foto 2:3: mantém o tablet E o rosto no enquadramento
+   (o olhar dele na tela é o assunto da imagem — perdê-lo esvazia a seção) */
+.kiosk-foto img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
+@media(max-width:940px){ .kiosk-foto{aspect-ratio:3/2} .kiosk-foto img{object-position:center 30%} }
+.kiosk-lista{margin-top:30px;display:flex;flex-direction:column;gap:16px}
+.kiosk-lista li{list-style:none;display:flex;gap:13px;font-size:16.5px;color:var(--claro);line-height:1.5;letter-spacing:-.01em}
+.kiosk-lista svg{width:20px;height:20px;flex-shrink:0;margin-top:3px;stroke:var(--roxo-vivo);fill:none;stroke-width:2.2}
+.kiosk-lista b{color:#fff;font-weight:600}
+/* a nota que vende o produto ao gestor E ao funcionário ao mesmo tempo */
+.kiosk-nota{
+  margin-top:28px;padding:18px 20px;border-radius:16px;
+  background:rgba(124,58,237,.14);border:1px solid var(--linha-esc);
+  font-size:15px;line-height:1.55;color:var(--claro);letter-spacing:-.01em;
+}
+.kiosk-nota b{color:#fff;font-weight:600}
+
 /* ---------- ESPELHO ---------- */
 .esp{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 @media(max-width:940px){ .esp{grid-template-columns:1fr;gap:48px} }
@@ -636,6 +658,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px)}
       <a href="#app">O app</a>
       <a href="#como">Como funciona</a>
       <a href="#recursos">Recursos</a>
+      <a href="#kiosk">Kiosk</a>
       <a href="#preco">Preço</a>
       <a href="#duvidas">Dúvidas</a>
       <a href="/livreto">Livreto</a>
@@ -968,6 +991,48 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px)}
   </div>
 </section>
 
+<!-- ============ KIOSK ============
+     A pergunta que o site inteiro provocava e não respondia: se o ponto bate no
+     celular do funcionário, e quem não tem celular? O kiosk é a resposta — e já
+     existe em produção (URL pública /erp/ponto_eletronico/kiosk/<token>). -->
+<section class="sec sec-preta" id="kiosk">
+  <div class="wrap kiosk">
+    <div class="reveal">
+      <span class="eyebrow eyebrow-esc">Kiosk</span>
+      <h2 class="t-sec">E quem não tem celular?</h2>
+      <p class="lead" style="margin-top:20px">
+        Um tablet na entrada resolve. O funcionário chega, a tela reconhece o rosto
+        e a batida sai — sem app pra instalar, sem login, sem tocar em nada.
+      </p>
+      <ul class="kiosk-lista">
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2.4"/><path d="M10 18.5h4" stroke-linecap="round"/></svg>
+          <span><b>Um endereço só da empresa.</b> O tablet abre nele e fica ligado o dia inteiro. Ninguém faz login.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 10.5h.01M15 10.5h.01M8.8 15a4.5 4.5 0 0 0 6.4 0" stroke-linecap="round"/></svg>
+          <span><b>Reconhece sozinho.</b> Ele chega, a tela identifica e bate — e um intervalo mínimo impede que a mesma pessoa bata duas vezes seguidas.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2.4"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          <span><b>Sem rosto, tem PIN.</b> Quem não quiser usar o rosto digita o código dele. A empresa escolhe o que exigir.</span>
+        </li>
+      </ul>
+      <p class="kiosk-nota">
+        <b>A tela fica na entrada — e não mostra a vida de ninguém.</b>
+        Nome, foto, saldo do banco de horas e as batidas do dia <b>não aparecem</b> no
+        kiosk. Isso é do funcionário, e fica no celular dele. A tela pública só
+        confirma que a batida saiu.
+      </p>
+    </div>
+
+    <figure class="kiosk-foto reveal" style="--d:.15s">
+      <img src="/assets/kiosk.jpg" width="1024" height="1536" loading="lazy" decoding="async"
+           alt="Funcionário chega na entrada e o tablet no suporte de parede reconhece o rosto dele." />
+    </figure>
+  </div>
+</section>
+
 <!-- ============ ESPELHO ============ -->
 <section class="sec sec-nevoa" id="espelho">
   <div class="wrap esp">
@@ -1108,6 +1173,10 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px)}
       <div class="qa reveal">
         <button aria-expanded="false">Tem taxa de implantação ou fidelidade? <span class="ic">+</span></button>
         <div class="ans"><div><p>Não e não. Você paga R$ 4,90 por pessoa que bate ponto, mês a mês, e cancela quando quiser. Até 2 pessoas é grátis — e grátis de verdade, com todos os recursos, não um teste de 14 dias.</p></div></div>
+      </div>
+      <div class="qa reveal">
+        <button aria-expanded="false">E o funcionário que não tem celular? <span class="ic">+</span></button>
+        <div class="ans"><div><p>Bate no <strong>kiosk</strong>: um tablet na entrada, num endereço só da sua empresa, que fica ligado o dia inteiro. Ele chega, a tela reconhece o rosto e a batida sai — sem app, sem login. Quem não quiser usar o rosto digita um PIN. E a tela não mostra nome, foto nem saldo de ninguém: isso é do funcionário e fica no celular dele.</p></div></div>
       </div>
       <div class="qa reveal">
         <button aria-expanded="false">Preciso comprar relógio de ponto? <span class="ic">+</span></button>
