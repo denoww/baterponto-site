@@ -47,7 +47,15 @@ jobs:
   espelho:
     runs-on: ubuntu-latest
     steps:
+      # ⚠️ `ref: main` de propósito. O default do checkout é o SHA DO EVENTO — e se
+      # o bot já commitou um espelho depois desse SHA (dois pushes seguidos, que a
+      # concurrency serializa), a árvore vem SEM o commit do bot e o rebase do push
+      # CONFLITA nos arquivos gerados. Foi o que aconteceu no run de 12/07.
+      # Buscando o topo de main, sempre construímos sobre o espelho mais recente.
       - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
 
       - name: Garante o Chrome (o runner já traz, mas não confie)
         run: |
