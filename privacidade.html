@@ -79,7 +79,38 @@
   footer{border-top:1px solid var(--linha);background:var(--nevoa);padding:40px 0;margin-top:80px}
   footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--tinta-2);font-size:13px}
   @media(max-width:600px){ .wrap,.nav-in{padding:0 20px} main{padding:52px 0 72px} }
+  .btn-optout{font:inherit;font-size:15px;font-weight:600;color:var(--branco);background:var(--roxo-esc);
+    border:0;border-radius:10px;padding:11px 18px;cursor:pointer}
+  .btn-optout:hover{background:var(--roxo)}
+  .btn-optout[disabled]{background:var(--tinta-2);cursor:default}
 </style>
+
+<!-- Medição — mesma tag da home. Aqui ela também precisa existir para o botão de
+     opt-out (seção "Visitantes deste site") poder desligá-la nesta mesma página. -->
+<script>
+  try { if (localStorage.getItem('sem-analytics') === '1') window['ga-disable-G-11WX5VGRP7'] = true; } catch (e) {}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-11WX5VGRP7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    analytics_storage: 'granted'
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-11WX5VGRP7', {
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false
+  });
+  document.addEventListener('click', function (e) {
+    var alvo = e.target;
+    if (!alvo || !alvo.closest) return;
+    var a = alvo.closest('a[href*="wa.me"]');
+    if (!a) return;
+    gtag('event', 'contato_whatsapp', { pagina: location.pathname, cta: a.className || 'sem-classe' });
+  });
+</script>
 </head>
 <body>
 <header class="nav">
@@ -181,6 +212,27 @@
       <li><b>Localização</b> — só é lida no instante da batida, quando há geofence. Você pode negar; nesse caso, se a empresa exigir a localização, a batida por esse aparelho pode não ser concluída.</li>
     </ul>
 
+    <h2>Visitantes deste site</h2>
+    <p class="sub">
+      Tudo acima trata do <b>aplicativo</b> — os dados de quem bate ponto. Esta seção é sobre outra
+      coisa: quem simplesmente <b>navega em baterponto.app</b>, sem ter conta nem vínculo com nenhuma
+      empresa cliente.
+    </p>
+    <ul>
+      <li><b>Medimos audiência</b> com o Google Analytics: páginas visitadas, de onde você veio (busca, anúncio, link), tipo de aparelho e cidade aproximada. Também registramos quando alguém clica em um botão de WhatsApp, para saber quais páginas geram contato.</li>
+      <li><b>Não fazemos publicidade com isso.</b> Os sinais de anúncio do Google chegam desligados neste site: não construímos público de remarketing, não personalizamos anúncio e não cruzamos sua navegação com sua conta Google.</li>
+      <li><b>Não pedimos, nem guardamos, nada que identifique você</b> nesta navegação. Nome, e-mail e telefone só existem se você escolher nos escrever no WhatsApp — e aí a conversa é você quem começa.</li>
+      <li><b>Base legal:</b> legítimo interesse em entender como as pessoas encontram e usam o site, com a transparência desta seção e o desligamento abaixo.</li>
+    </ul>
+    <div class="card">
+      <p style="margin-top:0"><b>Não quer ser medido?</b> O botão abaixo desliga a medição neste
+      navegador, agora, e continua valendo nas próximas visitas.</p>
+      <p style="margin-bottom:0">
+        <button type="button" id="btOptOut" class="btn-optout">Desligar a medição neste navegador</button>
+        <span id="optOutStatus" class="mono" style="margin-left:10px"></span>
+      </p>
+    </div>
+
     <h2>Alterações nesta política</h2>
     <p>
       Podemos atualizar esta política para refletir mudanças no app ou na legislação. A data de vigência
@@ -201,5 +253,32 @@
     <a href="/">← Voltar ao site</a>
   </div>
 </footer>
+
+<!-- Opt-out. `ga-disable-<ID>` é a chave que o próprio gtag.js consulta; gravar
+     em localStorage faz o desligamento sobreviver ao fechamento do navegador,
+     porque o bloco no <head> relê essa chave antes de carregar a tag. -->
+<script>
+(function () {
+  var bt = document.getElementById('btOptOut');
+  var status = document.getElementById('optOutStatus');
+  if (!bt) return;
+
+  function desligado() {
+    try { return localStorage.getItem('sem-analytics') === '1'; } catch (e) { return false; }
+  }
+  function pinta() {
+    if (!desligado()) return;
+    bt.disabled = true;
+    bt.textContent = 'Medição desligada neste navegador';
+    status.textContent = '✓';
+  }
+  bt.addEventListener('click', function () {
+    try { localStorage.setItem('sem-analytics', '1'); } catch (e) {}
+    window['ga-disable-G-11WX5VGRP7'] = true;
+    pinta();
+  });
+  pinta();
+})();
+</script>
 </body>
 </html>
