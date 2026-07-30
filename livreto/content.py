@@ -31,7 +31,12 @@ REGRAS DE COPY (do pack.yml → comunicacao):
   - Nunca prometer eSocial, folha, push ou integração pronta com folha.
 """
 
-WA = "https://wa.me/5562996701278"
+# O número vive em UM lugar só: o arquivo `.whatsapp` na raiz do repo. Dotfile não é
+# publicado pelo GitHub Pages, e o workflow `guarda.yml` barra o push se algum `wa.me`
+# do HTML divergir dele. Trocou de número? Edite `.whatsapp` e mais nada aqui.
+from pathlib import Path
+
+WA = "https://wa.me/" + (Path(__file__).parent.parent / ".whatsapp").read_text().strip()
 WA_TXT = "?text=Ol%C3%A1%21%20Vi%20o%20livreto%20do%20baterponto%20e%20quero%20conhecer."
 SITE = "https://www.baterponto.app"
 
