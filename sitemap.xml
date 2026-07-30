@@ -2,20 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.baterponto.app/</loc>
-    <lastmod>2026-07-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://www.baterponto.app/livreto/</loc>
-    <lastmod>2026-07-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://www.baterponto.app/privacidade</loc>
-    <lastmod>2026-07-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-07-30</lastmod>
   </url>
 </urlset>
