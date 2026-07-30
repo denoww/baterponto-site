@@ -415,13 +415,13 @@ def build():
     sha = hashlib.sha1(body.encode()).hexdigest()[:7]
     foot = (f'<footer class="foot"><div class="foot-in">'
             f'<span>baterponto · ponto eletrônico para empresas · '
-            f'<a href="/privacidade">Privacidade</a></span>'
+            f'<a href="{C.SITE}/privacidade">Privacidade</a></span>'
             f'<span>Livreto v{hoje} · {sha}</span></div></footer>')
 
     desc = ("Livreto do baterponto: ponto eletrônico no celular do funcionário. NSR na hora, "
             "registro imutável (REP-P, Portaria 671), selfie com prova de vida, geofence e fila "
             "offline. R$ 4,90 por pessoa/mês, grátis até 2.")
-    url = f"{C.SITE}/livreto"
+    url = f"{C.SITE}/livreto/"
     head = f'''<!doctype html>
 <html lang="pt-BR">
 <head>
