@@ -710,6 +710,150 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px)}
     });
   });
 </script>
+
+<!-- ═══ DADOS ESTRUTURADOS (JSON-LD) ═════════════════════════════════════════
+     O FAQ aqui é EXTRAÍDO do acordeão desta página, não digitado: schema que não
+     bate com o texto visível é a violação clássica de rich result. O guard do CI
+     (.github/workflows/seo.yml) confere cada `name` contra o HTML.
+
+     ⚠️ Expectativa honesta: desde ago/2023 o Google restringiu o rich result de
+     FAQ a site de governo e saúde — NÃO espere accordion na SERP. O que rende
+     aqui é entidade (Organization) e citação em resposta de IA.
+
+     ⛔ aggregateRating e review são PROIBIDOS: estrela fabricada em dado
+     estruturado é motivo de ação manual. ═══════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.baterponto.app/#organizacao",
+      "name": "baterponto",
+      "url": "https://www.baterponto.app/",
+      "logo": "https://www.baterponto.app/assets/brand-mark.png",
+      "description": "Ponto eletrônico que roda no celular que o funcionário já tem. O registro sai com NSR na tela dele, no mesmo segundo, e é imutável.",
+      "areaServed": "BR",
+      "sameAs": [
+        "https://blog.baterponto.app/"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "telephone": "+5562985673142",
+          "areaServed": "BR",
+          "availableLanguage": "Portuguese"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.baterponto.app/#site",
+      "url": "https://www.baterponto.app/",
+      "name": "baterponto",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://www.baterponto.app/#organizacao"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.baterponto.app/#aplicativo",
+      "name": "baterponto",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Android, iOS",
+      "inLanguage": "pt-BR",
+      "url": "https://www.baterponto.app/",
+      "publisher": {
+        "@id": "https://www.baterponto.app/#organizacao"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "4.90",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock",
+        "description": "Por pessoa que bate ponto, por mês. Grátis até 2 pessoas.",
+        "url": "https://www.baterponto.app/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.baterponto.app/#faq",
+      "inLanguage": "pt-BR",
+      "isPartOf": {
+        "@id": "https://www.baterponto.app/#site"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Tem taxa de implantação ou fidelidade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não e não. Você paga R$ 4,90 por pessoa que bate ponto, mês a mês, e cancela quando quiser. Até 2 pessoas é grátis — e grátis de verdade, com todos os recursos, não um teste de 14 dias."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "E o funcionário que não tem celular?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bate no kiosk : um tablet na entrada, num endereço só da sua empresa, que fica ligado o dia inteiro. Ele chega, a tela reconhece o rosto e a batida sai — sem app, sem login. Quem não quiser usar o rosto digita um PIN. E a tela não mostra nome, foto nem saldo de ninguém: isso é do funcionário e fica no celular dele."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Preciso comprar relógio de ponto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. O celular que o funcionário já tem é o ponto. Sem hardware, sem obra, sem manutenção — é por isso que o preço fecha em R$ 4,90."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O funcionário pode bater de casa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Só se a empresa deixar. Com o geofence ligado, o app coleta a localização e a marcação registra se ele estava dentro da área. Fora da área, o gestor vê."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "E se acabar a internet na hora de bater?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A batida fica salva no aparelho com o horário real em que aconteceu, e sobe sozinha quando o sinal voltar. O app avisa: “Sem internet — batida salva no aparelho. Sincroniza assim que conectar.”"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O app usa reconhecimento facial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quando a empresa exige, a batida vem com selfie e prova de vida — o app pede pra alinhar o rosto no oval e, no modo ativo, virar o rosto pro lado. Se a operação não exigir, é só o toque no botão."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O funcionário escolhe se é entrada ou saída?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. Ele só bate. O sistema classifica pela jornada dele e pela última marcação — entrada, início do intervalo, volta do intervalo ou saída. Menos erro, menos discussão."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quem trabalha em mais de uma empresa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Troca no seletor no topo da tela e bate no lugar certo. Cada vínculo tem sua jornada e seu espelho."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
