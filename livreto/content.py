@@ -90,7 +90,9 @@ BATIDA = [
      "Quem trabalha em duas empresas ou unidades troca no topo da tela e bate no lugar certo. "
      "Cada vínculo tem sua jornada e seu espelho.", ""),
     ("Android e iOS",
-     "App em Flutter, roda no celular que o funcionário já tem — inclusive em Android antigo.", ""),
+     "App em Flutter, roda no celular que o funcionário já tem — inclusive em Android antigo. "
+     "Nas lojas: play.google.com/store/apps/details?id=br.com.corpflix.ponto e "
+     "apps.apple.com/br/app/baterponto/id6795568588.", ""),
 ]
 
 PROVA = [

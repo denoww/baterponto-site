@@ -633,6 +633,10 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px)}
 .cta h2 em{font-style:normal;color:#D8B4FE}
 .cta p{margin:22px auto 38px;font-size:clamp(17px,1.8vw,21px);line-height:1.5;color:var(--claro-2);max-width:50ch}
 .cta-acts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+/* Endereços das lojas sob o CTA: informação de serviço (o funcionário mandado pelo
+   patrão), não competição com o WhatsApp — por isso small e sem pill. */
+.cta-lojas{margin:26px auto 0;font-size:14px;color:var(--claro-2);max-width:60ch}
+.cta-lojas a{color:#D8B4FE;text-decoration:underline;text-underline-offset:3px}
 
 /* ---------- FOOTER ---------- */
 .ft{background:var(--nevoa);padding:52px 0 46px;border-top:1px solid var(--linha)}
@@ -1444,6 +1448,12 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px)}
       </a>
       <a class="btn btn-claro" href="#app">Rever o app</a>
     </div>
+    <!-- Endereços das lojas: o funcionário chega aqui pelo link que o patrão mandou.
+         Discreto de propósito — o CTA primário segue sendo o WhatsApp (lead). -->
+    <p class="cta-lojas">O app do funcionário:
+      <a href="https://play.google.com/store/apps/details?id=br.com.corpflix.ponto" target="_blank" rel="noopener">Android na Google Play</a> ·
+      <a href="https://apps.apple.com/br/app/baterponto/id6795568588" target="_blank" rel="noopener">iPhone na App Store</a>
+    </p>
   </div>
 </section>
 
@@ -1453,7 +1463,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px)}
       <img class="brand-mark" src="/assets/brand-mark.png" width="24" height="24" alt="" />
       <span>baterponto<span class="tld">.app</span></span>
     </a>
-    <small>© 2026 baterponto · ponto eletrônico para empresas · <a href="/entrar">Entrar</a> · <a href="https://blog.baterponto.app/">Blog</a> · <a href="/livreto/">Livreto</a> · <a href="/privacidade">Privacidade</a></small>
+    <small>© 2026 baterponto · ponto eletrônico para empresas · <a href="/entrar">Entrar</a> · <a href="https://play.google.com/store/apps/details?id=br.com.corpflix.ponto">Google Play</a> · <a href="https://apps.apple.com/br/app/baterponto/id6795568588">App Store</a> · <a href="https://blog.baterponto.app/">Blog</a> · <a href="/livreto/">Livreto</a> · <a href="/privacidade">Privacidade</a></small>
   </div>
 </footer>
 

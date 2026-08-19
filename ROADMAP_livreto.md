@@ -19,6 +19,16 @@
   colorido — padrão Apple.
 - **Concorrente não tem nome.** É "relógio de parede", "cartão e planilha", "app que cobra por faixa".
 
+## Endereços oficiais do app nas lojas (publicados · ago/2026)
+
+Usar estes, tal e qual, em qualquer peça (site, livreto, mensagem ao cliente):
+
+- **Android (Google Play)**: `https://play.google.com/store/apps/details?id=br.com.corpflix.ponto`
+- **iPhone (App Store)**: `https://apps.apple.com/br/app/baterponto/id6795568588`
+
+O tile "Android e iOS" do `livreto/content.py` carrega os dois endereços. O app iOS saiu de
+"em publicação" em 2026-08 — remover qualquer ressalva remanescente ao encontrá-la.
+
 ## Onda 0 — As-built (FEITO · jul/2026)
 
 - Página Apple long-scroll com 9 capítulos: a batida, a prova (NSR), o mundo real (offline/geofence),
