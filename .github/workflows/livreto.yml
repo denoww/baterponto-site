@@ -128,7 +128,15 @@ jobs:
 
       - name: Commita o espelho
         run: |
-          if git diff --quiet -- livreto/index.html livreto.pdf livreto/.espelho.sha; then
+          # ⚠️ `git diff --quiet -- <paths>` NÃO enxerga arquivo UNTRACKED. Aqui o
+          # livreto.pdf já é rastreado desde sempre, então o diff bastava — mas este
+          # workflow é copiado como blueprint para os sites das outras marcas, e num repo
+          # NOVO o PDF nasce untracked: o build gerava as páginas, o guard de página em
+          # branco passava, e este passo dizia "nada mudou" e saía com sucesso. Resultado:
+          # /livreto.pdf respondendo 404 sem nenhum workflow vermelho para denunciar
+          # (visto no acompanhaobra-site em 20/08/2026). `git status --porcelain` cobre
+          # modificado E não rastreado.
+          if [ -z "$(git status --porcelain -- livreto/index.html livreto.pdf livreto/.espelho.sha)" ]; then
             echo "nada mudou — sem commit"
             exit 0
           fi
