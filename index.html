@@ -710,7 +710,15 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px)}
     if (!a) return;
     gtag('event', 'contato_whatsapp', {
       pagina: location.pathname,
-      cta: a.className || 'sem-classe'
+      cta: a.className || 'sem-classe',
+      // De ONDE veio quem clicou. Medido em 17-18/09/2026: metade das sessoes
+      // deste site vem de chatgpt.com e 5% do Google, mas o lead sai por wa.me e
+      // o clique e o lead nunca se cruzavam. So o HOSTNAME: a URL inteira do
+      // referrer pode carregar termo de busca, que e dado de quem visita.
+      origem: (function () {
+        try { return document.referrer ? new URL(document.referrer).hostname : '(direto)'; }
+        catch (e) { return '(desconhecido)'; }
+      })()
     });
   });
 </script>
