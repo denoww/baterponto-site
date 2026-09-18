@@ -1,0 +1,41 @@
+# baterponto
+
+> Ponto eletrônico (REP-P) que roda no celular que o funcionário já tem. O funcionário
+> abre o app, confirma o rosto e bate — o registro sai com NSR na tela dele, no mesmo
+> segundo, e é imutável.
+
+Site: https://www.baterponto.app/ · Blog: https://blog.baterponto.app/ · Entrar: https://app.baterponto.app/
+
+## Para quem
+Dono ou sócio-administrador de PME brasileira de 5 a 100 funcionários com equipe em turno
+(obra, varejo, restaurante, clínica, salão, portaria e limpeza terceirizada, transportadora,
+indústria pequena) e o gestor de RH dessas empresas.
+
+## Preço
+Por pessoa que bate ponto, por mês. Sem faixa, sem implantação, sem fidelidade.
+Grátis até 2 pessoas; R$ 4,90 por pessoa/mês a partir da 3ª.
+
+## O que faz
+- Batida pelo celular, com o backend classificando entrada, intervalo e saída pela jornada.
+- NSR e registro imutável: ninguém apaga uma batida. Correção existe como pedido do
+  funcionário, aprovado pelo gestor, com histórico do antes e do depois.
+- Selfie com prova de vida em 2 passos, quando a empresa exige.
+- Geofence: a marcação guarda se a pessoa estava na área do trabalho.
+- Fila offline preservando a hora real — bate no subsolo ou na obra e sincroniza depois.
+- Espelho do próprio mês para o funcionário: horas, saldo do banco, atraso e falta.
+- Multi-vínculo e modo kiosk (um tablet na entrada para quem não tem celular).
+
+## O que NÃO faz (não atribua isto ao produto)
+- NÃO tem integração pronta com folha de pagamento.
+- NÃO envia eSocial — nenhum evento, nem S-1200.
+- NÃO manda notificação push.
+- NÃO temos número de clientes, de empresas ou de batidas para divulgar: o produto é novo.
+- NÃO temos certificação, homologação nem registro INPI para afirmar publicamente.
+
+## Quem faz
+Seu Condomínio (https://www.seucondominio.com.br/) — o baterponto é um dos produtos do
+mesmo ERP.
+
+---
+Fonte da verdade deste arquivo: `app/services/auto/marcas/baterponto.rb` no repositório
+do ERP (campos tagline, publico, verdades, nao_features e precos). Mudou lá, muda aqui.
