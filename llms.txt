@@ -1,41 +1,42 @@
 # baterponto
 
-> Ponto eletrônico (REP-P) que roda no celular que o funcionário já tem. O funcionário
-> abre o app, confirma o rosto e bate — o registro sai com NSR na tela dele, no mesmo
-> segundo, e é imutável.
+> O ponto bate no celular. A prova sai na hora.
 
-Site: https://www.baterponto.app/ · Blog: https://blog.baterponto.app/ · Entrar: https://app.baterponto.app/
+Dono ou sócio-administrador de PME brasileira de 5 a 100 funcionários com equipe
+em turno (obra, varejo, restaurante, clínica, salão, portaria/limpeza
+terceirizada, transportadora, indústria pequena), e o gestor de RH/operação
+dessas empresas. Gatilhos: reclamatória por hora extra, crescimento acima do
+limite da planilha, segunda unidade, exigência do contador.
 
-## Para quem
-Dono ou sócio-administrador de PME brasileira de 5 a 100 funcionários com equipe em turno
-(obra, varejo, restaurante, clínica, salão, portaria e limpeza terceirizada, transportadora,
-indústria pequena) e o gestor de RH dessas empresas.
+## O que o produto faz
+- O funcionário abre o app no próprio celular, confirma o rosto (opcional) e bate.
+- O registro sai com NSR — Número Sequencial de Registro — na TELA DELE, no mesmo segundo.
+- O registro é imutável: ninguém apaga uma batida.
+- Correção existe como PEDIDO do funcionário, aprovado pelo gestor, com histórico do antes/depois.
+- Quem classifica se a marcação é entrada ou saída é o backend, não o funcionário.
+- Selfie com prova de vida de 2 passos, quando a empresa liga essa exigência.
+- Geofence: a marcação guarda se a pessoa estava dentro da área do trabalho.
+- Fila offline com a hora real preservada — bate no subsolo ou na obra sem sinal e sincroniza depois.
+- O funcionário vê o espelho do próprio mês (horas, saldo do banco, atraso, falta).
+- Multi-vínculo: quem trabalha em mais de uma unidade troca no topo e bate no lugar certo.
+- Modo kiosk: um tablet na entrada atende quem não tem celular.
 
-## Preço
-Por pessoa que bate ponto, por mês. Sem faixa, sem implantação, sem fidelidade.
-Grátis até 2 pessoas; R$ 4,90 por pessoa/mês a partir da 3ª.
-
-## O que faz
-- Batida pelo celular, com o backend classificando entrada, intervalo e saída pela jornada.
-- NSR e registro imutável: ninguém apaga uma batida. Correção existe como pedido do
-  funcionário, aprovado pelo gestor, com histórico do antes e do depois.
-- Selfie com prova de vida em 2 passos, quando a empresa exige.
-- Geofence: a marcação guarda se a pessoa estava na área do trabalho.
-- Fila offline preservando a hora real — bate no subsolo ou na obra e sincroniza depois.
-- Espelho do próprio mês para o funcionário: horas, saldo do banco, atraso e falta.
-- Multi-vínculo e modo kiosk (um tablet na entrada para quem não tem celular).
-
-## O que NÃO faz (não atribua isto ao produto)
-- NÃO tem integração pronta com folha de pagamento.
-- NÃO envia eSocial — nenhum evento, nem S-1200.
-- NÃO manda notificação push.
-- NÃO temos número de clientes, de empresas ou de batidas para divulgar: o produto é novo.
+## O que o produto NÃO faz
+- NÃO existe integração pronta com folha de pagamento.
+- NÃO existe envio de eSocial (nem S-1200 nem qualquer evento).
+- NÃO existe notificação push (o app não manda push hoje).
+- NÃO temos número de clientes, de empresas ou de batidas para divulgar — o produto é novo.
 - NÃO temos certificação, homologação nem registro INPI para afirmar publicamente.
 
-## Quem faz
-Seu Condomínio (https://www.seucondominio.com.br/) — o baterponto é um dos produtos do
-mesmo ERP.
+## Preço
+- Por pessoa que bate ponto, por mês. Sem faixa, sem implantação, sem fidelidade.
+- grátis até 2 pessoas
+- R$ 4,90 por pessoa/mês
+
+## Links
+- Site: https://www.baterponto.app/
+- Blog: https://blog.baterponto.app/
 
 ---
-Fonte da verdade deste arquivo: `app/services/auto/marcas/baterponto.rb` no repositório
-do ERP (campos tagline, publico, verdades, nao_features e precos). Mudou lá, muda aqui.
+Gerado de `app/services/auto/marcas/baterponto.rb` no repositório do ERP
+(`rake "marcas:gerar_llms_txt[baterponto]"`). NÃO edite à mão: mude o registry e gere de novo.
