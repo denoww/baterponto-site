@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Antes de escolher um controle de ponto</title>
+<meta name="description" content="As perguntas que decidem a escolha de um controle de ponto: comprovante com NSR, quem pode corrigir a marcação, o que acontece sem internet e quanto custa." />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href="https://www.baterponto.app/perguntas-antes-de-escolher" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="baterponto" />
+<meta property="og:title" content="Antes de escolher um controle de ponto" />
+<meta property="og:description" content="As perguntas que decidem a escolha de um controle de ponto: comprovante com NSR, quem pode corrigir a marcação, o que acontece sem internet e quanto custa." />
+<meta property="og:url" content="https://www.baterponto.app/perguntas-antes-de-escolher" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:image" content="https://www.baterponto.app/assets/og.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Antes de escolher um controle de ponto" />
+<meta name="twitter:description" content="As perguntas que decidem a escolha de um controle de ponto: comprovante com NSR, quem pode corrigir a marcação, o que acontece sem internet e quanto custa." />
+<meta name="twitter:image" content="https://www.baterponto.app/assets/og.jpg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Azeret+Mono:wght@500&display=swap" rel="stylesheet" />
+<style>
+  /* mesmo sistema visual do index: superfícies apple, SF Pro/Inter, pill, 44px de nav */
+  :root{
+    --branco:#fff; --nevoa:#f5f5f7;
+    --tinta:#1d1d1f; --tinta-2:#6e6e73;
+    --roxo:#7C3AED; --roxo-esc:#6D28D9;
+    --linha:rgba(0,0,0,.12); --max:760px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--branco);color:var(--tinta);
+    font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',system-ui,sans-serif;
+    font-size:17px;line-height:1.4705882353;letter-spacing:-.022em;
+    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  }
+  a{color:var(--roxo-esc);text-decoration:none}
+  a:hover{text-decoration:underline;text-underline-offset:2px}
+  :focus-visible{outline:3px solid var(--roxo);outline-offset:3px;border-radius:6px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  header.nav{
+    position:sticky;top:0;z-index:50;height:52px;
+    border-bottom:1px solid rgba(0,0,0,.08);
+    background:rgba(255,255,255,.72);
+    backdrop-filter:saturate(180%) blur(20px);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);
+  }
+  .nav-in{max-width:var(--max);margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center}
+  .brand{display:flex;align-items:center;gap:8px;font-weight:600;font-size:17px;letter-spacing:-.02em;color:var(--tinta)}
+  .brand:hover{text-decoration:none}
+  .brand img{width:24px;height:24px;border-radius:6px;display:block}
+  .brand .tld{color:var(--roxo)}
+
+  main{padding:72px 0 96px}
+  /* eyebrow grande e semibold, como nas feature pages */
+  .eyebrow{display:block;font-size:21px;font-weight:600;letter-spacing:.011em;line-height:1.19;color:var(--roxo)}
+  h1{font-size:clamp(40px,5vw,56px);font-weight:600;letter-spacing:-.005em;line-height:1.0714;margin-top:8px}
+  .atualizado{margin-top:16px;font-size:14px;color:var(--tinta-2);letter-spacing:-.016em}
+  .intro{margin-top:28px;font-size:21px;line-height:1.381;letter-spacing:.011em;color:var(--tinta-2)}
+  h2{font-size:28px;font-weight:600;letter-spacing:.007em;line-height:1.1428;
+     margin:52px 0 0;padding-top:32px;border-top:1px solid var(--linha)}
+  h3{font-size:19px;font-weight:600;letter-spacing:.012em;margin-top:26px}
+  p{margin-top:14px;color:var(--tinta)}
+  p.sub{color:var(--tinta-2);font-size:15px}
+  ul{margin:16px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+  li{padding-left:22px;position:relative;color:var(--tinta)}
+  li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:var(--roxo)}
+  li b{font-weight:600}
+  /* card sem sombra: separa por contraste, como na apple */
+  .card{background:var(--nevoa);border-radius:18px;padding:26px 28px;margin-top:18px}
+  .mono{font-family:'Azeret Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums;letter-spacing:0}
+  footer{border-top:1px solid var(--linha);background:var(--nevoa);padding:40px 0;margin-top:80px}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--tinta-2);font-size:13px}
+  @media(max-width:600px){ .wrap,.nav-in{padding:0 20px} main{padding:52px 0 72px} }
+  .btn-optout{font:inherit;font-size:15px;font-weight:600;color:var(--branco);background:var(--roxo-esc);
+    border:0;border-radius:10px;padding:11px 18px;cursor:pointer}
+  .btn-optout:hover{background:var(--roxo)}
+  .btn-optout[disabled]{background:var(--tinta-2);cursor:default}
+  .q{border-top:1px solid var(--linha);padding:28px 0}
+  .q h2{font-size:21px;line-height:1.19;letter-spacing:.011em;margin:0 0 10px}
+  .q p{color:var(--tinta-2)}
+  .fecho{margin-top:40px;padding:24px;background:var(--nevoa);border-radius:18px}
+</style>
+
+<!-- Medição — mesma tag da home. Aqui ela também precisa existir para o botão de
+     opt-out (seção "Visitantes deste site") poder desligá-la nesta mesma página. -->
+<script>
+  try { if (localStorage.getItem('sem-analytics') === '1') window['ga-disable-G-11WX5VGRP7'] = true; } catch (e) {}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-11WX5VGRP7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    analytics_storage: 'granted'
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-11WX5VGRP7', {
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false
+  });
+  document.addEventListener('click', function (e) {
+    var alvo = e.target;
+    if (!alvo || !alvo.closest) return;
+    var a = alvo.closest('a[href*="wa.me"]');
+    if (!a) return;
+    gtag('event', 'contato_whatsapp', { pagina: location.pathname, cta: a.className || 'sem-classe' });
+  });
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="/"><img src="/assets/brand-mark.png" width="28" height="28" alt="" /><span>baterponto<span class="tld">.app</span></span></a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <span class="eyebrow">Para quem está decidindo</span>
+    <h1>Antes de escolher um controle de ponto</h1>
+
+    <p class="intro">
+      Escolher controle de ponto é escolher que prova você vai ter quando alguém discordar do que
+      está na folha. As perguntas abaixo são as que mudam essa resposta — com o que o baterponto faz,
+      e também o que ele não faz.
+    </p>
+
+      <div class="q">
+        <h2>O funcionário recebe comprovante da batida?</h2>
+        <p>Sim. No baterponto o comprovante aparece na tela do próprio funcionário no mesmo segundo, com o NSR — o Número Sequencial de Registro, que identifica aquela marcação. É o que permite a ele provar que bateu, sem depender de pedir nada a ninguém.</p>
+      </div>
+      <div class="q">
+        <h2>Quem pode corrigir uma marcação errada?</h2>
+        <p>No baterponto ninguém apaga uma batida. A correção existe como pedido do funcionário, que o gestor aprova ou recusa, e o histórico guarda o antes e o depois. Ao avaliar qualquer sistema, pergunte o que acontece com a marcação original depois da correção: se ela some, você perdeu a prova que o registro deveria criar.</p>
+      </div>
+      <div class="q">
+        <h2>E se o funcionário estiver sem internet na hora de bater?</h2>
+        <p>A batida entra numa fila no aparelho com a hora real preservada e sincroniza quando a conexão volta. Isso importa para quem trabalha em obra, subsolo, galpão e área rural — onde a falha de sinal é rotina, não exceção.</p>
+      </div>
+      <div class="q">
+        <h2>Precisa comprar relógio de ponto?</h2>
+        <p>Não. O funcionário bate pelo celular que já tem. Para quem não tem celular ou não quer usar o próprio, um tablet na entrada funciona como totem, no modo kiosk.</p>
+      </div>
+      <div class="q">
+        <h2>Como saber se quem bateu é a pessoa certa?</h2>
+        <p>Quando a empresa liga a exigência, a batida pede uma selfie com prova de vida em dois passos, e a marcação guarda se a pessoa estava dentro da área do trabalho. As duas coisas são opcionais e ficam registradas com a batida.</p>
+      </div>
+      <div class="q">
+        <h2>Quem decide se a batida é entrada ou saída?</h2>
+        <p>O servidor, pela sequência do dia — não a pessoa que está batendo. É uma diferença pequena na tela e grande na apuração: quando quem bate escolhe o tipo, o erro de clique vira hora extra ou falta no fim do mês.</p>
+      </div>
+      <div class="q">
+        <h2>O funcionário consegue ver as próprias horas?</h2>
+        <p>Sim. Ele abre o espelho do mês no aparelho e vê horas trabalhadas, saldo do banco de horas, atraso e falta. Quando o funcionário acompanha o próprio saldo, a conversa no fechamento deixa de ser sobre o que aconteceu e passa a ser sobre o que fazer.</p>
+      </div>
+      <div class="q">
+        <h2>E quem trabalha em mais de uma unidade da mesma empresa?</h2>
+        <p>A pessoa troca a unidade no topo da tela e bate no lugar certo, sem segundo cadastro e sem segunda conta.</p>
+      </div>
+      <div class="q">
+        <h2>O que o sistema NÃO faz?</h2>
+        <p>Não existe integração pronta com folha de pagamento, não existe envio de eSocial e o app não manda notificação push. Dizemos isso na frente porque é o tipo de coisa que, descoberta no segundo mês, custa mais caro do que a mensalidade inteira.</p>
+      </div>
+      <div class="q">
+        <h2>Quanto custa?</h2>
+        <p>R$ 4,90 por pessoa que bate ponto, por mês, e grátis até 2 pessoas. Sem faixa de preço, sem implantação e sem fidelidade.</p>
+      </div>
+
+    <div class="fecho">
+      <p>
+        Ficou alguma pergunta que não está aqui?
+        <a href="https://wa.me/5562985673142?text=Ol%C3%A1%21%20Estou%20escolhendo%20um%20controle%20de%20ponto%20e%20tenho%20uma%20d%C3%BAvida." target="_blank" rel="noopener">mande no WhatsApp</a>
+        — respondemos inclusive o que o sistema não resolve.
+      </p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 baterponto · ponto eletrônico para empresas</span>
+    <a href="/">← Voltar ao site</a>
+  </div>
+</footer>
+
+<!-- Opt-out. `ga-disable-<ID>` é a chave que o próprio gtag.js consulta; gravar
+     em localStorage faz o desligamento sobreviver ao fechamento do navegador,
+     porque o bloco no <head> relê essa chave antes de carregar a tag. -->
+<script>
+(function () {
+  var bt = document.getElementById('btOptOut');
+  var status = document.getElementById('optOutStatus');
+  if (!bt) return;
+
+  function desligado() {
+    try { return localStorage.getItem('sem-analytics') === '1'; } catch (e) { return false; }
+  }
+  function pinta() {
+    if (!desligado()) return;
+    bt.disabled = true;
+    bt.textContent = 'Medição desligada neste navegador';
+    status.textContent = '✓';
+  }
+  bt.addEventListener('click', function () {
+    try { localStorage.setItem('sem-analytics', '1'); } catch (e) {}
+    window['ga-disable-G-11WX5VGRP7'] = true;
+    pinta();
+  });
+  pinta();
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "O funcionário recebe comprovante da batida?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. No baterponto o comprovante aparece na tela do próprio funcionário no mesmo segundo, com o NSR — o Número Sequencial de Registro, que identifica aquela marcação. É o que permite a ele provar que bateu, sem depender de pedir nada a ninguém."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quem pode corrigir uma marcação errada?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No baterponto ninguém apaga uma batida. A correção existe como pedido do funcionário, que o gestor aprova ou recusa, e o histórico guarda o antes e o depois. Ao avaliar qualquer sistema, pergunte o que acontece com a marcação original depois da correção: se ela some, você perdeu a prova que o registro deveria criar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "E se o funcionário estiver sem internet na hora de bater?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A batida entra numa fila no aparelho com a hora real preservada e sincroniza quando a conexão volta. Isso importa para quem trabalha em obra, subsolo, galpão e área rural — onde a falha de sinal é rotina, não exceção."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Precisa comprar relógio de ponto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não. O funcionário bate pelo celular que já tem. Para quem não tem celular ou não quer usar o próprio, um tablet na entrada funciona como totem, no modo kiosk."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como saber se quem bateu é a pessoa certa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Quando a empresa liga a exigência, a batida pede uma selfie com prova de vida em dois passos, e a marcação guarda se a pessoa estava dentro da área do trabalho. As duas coisas são opcionais e ficam registradas com a batida."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quem decide se a batida é entrada ou saída?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O servidor, pela sequência do dia — não a pessoa que está batendo. É uma diferença pequena na tela e grande na apuração: quando quem bate escolhe o tipo, o erro de clique vira hora extra ou falta no fim do mês."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O funcionário consegue ver as próprias horas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Ele abre o espelho do mês no aparelho e vê horas trabalhadas, saldo do banco de horas, atraso e falta. Quando o funcionário acompanha o próprio saldo, a conversa no fechamento deixa de ser sobre o que aconteceu e passa a ser sobre o que fazer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "E quem trabalha em mais de uma unidade da mesma empresa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A pessoa troca a unidade no topo da tela e bate no lugar certo, sem segundo cadastro e sem segunda conta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que o sistema NÃO faz?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não existe integração pronta com folha de pagamento, não existe envio de eSocial e o app não manda notificação push. Dizemos isso na frente porque é o tipo de coisa que, descoberta no segundo mês, custa mais caro do que a mensalidade inteira."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto custa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "R$ 4,90 por pessoa que bate ponto, por mês, e grátis até 2 pessoas. Sem faixa de preço, sem implantação e sem fidelidade."
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>
