@@ -142,3 +142,25 @@ Não confie em "parece certo" — **rode e confira contra uma expectativa concre
 - **CI**: um workflow que nunca foi executado não vale nada. Os 4 bugs do espelho do livreto
   (ImageMagick ausente, corrida de push, rebase sujo, fingerprint dependente de locale) só
   apareceram **rodando**.
+
+## Regra de copy que vale para as 5 marcas
+
+### ⚠️ Não-feature entregue: a regra sai no MESMO dia
+
+O guard existe para impedir que a copy prometa o que não existe. No dia em que a coisa passa
+a existir, **ele passa a proibir a verdade** — e o sintoma é o CI reprovando quem tenta
+consertar, o que faz a pessoa desistir e o texto errado ficar.
+
+Caso real (24/09/2026): o app do atendeaqui foi publicado nas duas lojas em **11/08**. Seis
+semanas depois o site ainda dizia "o aplicativo está sendo feito", o livreto dizia "não está
+na loja", e **duas regras** — uma no `seo.py` daqui, outra no registry do ERP — bloqueavam a
+correção. O bloco `verdades` do mesmo registry, a dois metros dali, dizia o certo.
+
+Ao entregar algo que estava na lista de não-features, o mesmo commit tem de: tirar a linha de
+`nao_features` e a regra de `REGRAS_PROIBIDAS` no registry do ERP; tirar a regra equivalente
+do `seo.py`; corrigir a copy do site **e do livreto** (`livreto/content.py`); e acrescentar o
+que agora existe.
+
+⚠️ Armadilha vizinha, em página de PERGUNTAS: o guard procura o negador nos 80 caracteres
+**anteriores** ao termo proibido, e ali o "Não." mora na resposta, depois da pergunta. Aí o
+certo é reescrever a pergunta — a regra continua válida.
