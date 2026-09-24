@@ -36,6 +36,7 @@ limite da planilha, segunda unidade, exigência do contador.
 ## Links
 - Site: https://www.baterponto.app/
 - Blog: https://blog.baterponto.app/
+- Perguntas antes de escolher: https://www.baterponto.app/perguntas-antes-de-escolher
 
 ---
 Gerado de `app/services/auto/marcas/baterponto.rb` no repositório do ERP
