@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Registro de ponto por exceção: o que é e quando vale</title>
+<meta name="description" content="O que é o registro de ponto por exceção, o que a CLT exige para adotá-lo (art. 74, §4º), onde ele costuma dar problema e quando registrar toda batida compensa." />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href="https://www.baterponto.app/registro-de-ponto-por-excecao" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="baterponto" />
+<meta property="og:title" content="Registro de ponto por exceção: o que é e quando vale" />
+<meta property="og:description" content="O que é o registro de ponto por exceção, o que a CLT exige para adotá-lo (art. 74, §4º), onde ele costuma dar problema e quando registrar toda batida compensa." />
+<meta property="og:url" content="https://www.baterponto.app/registro-de-ponto-por-excecao" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:image" content="https://www.baterponto.app/assets/og.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Registro de ponto por exceção: o que é e quando vale" />
+<meta name="twitter:description" content="O que é o registro de ponto por exceção, o que a CLT exige para adotá-lo (art. 74, §4º), onde ele costuma dar problema e quando registrar toda batida compensa." />
+<meta name="twitter:image" content="https://www.baterponto.app/assets/og.jpg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Azeret+Mono:wght@500&display=swap" rel="stylesheet" />
+<style>
+  /* mesmo sistema visual do index: superfícies apple, SF Pro/Inter, pill, 44px de nav */
+  :root{
+    --branco:#fff; --nevoa:#f5f5f7;
+    --tinta:#1d1d1f; --tinta-2:#6e6e73;
+    --roxo:#7C3AED; --roxo-esc:#6D28D9;
+    --linha:rgba(0,0,0,.12); --max:760px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--branco);color:var(--tinta);
+    font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',system-ui,sans-serif;
+    font-size:17px;line-height:1.4705882353;letter-spacing:-.022em;
+    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  }
+  a{color:var(--roxo-esc);text-decoration:none}
+  a:hover{text-decoration:underline;text-underline-offset:2px}
+  :focus-visible{outline:3px solid var(--roxo);outline-offset:3px;border-radius:6px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  header.nav{
+    position:sticky;top:0;z-index:50;height:52px;
+    border-bottom:1px solid rgba(0,0,0,.08);
+    background:rgba(255,255,255,.72);
+    backdrop-filter:saturate(180%) blur(20px);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);
+  }
+  .nav-in{max-width:var(--max);margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center}
+  .brand{display:flex;align-items:center;gap:8px;font-weight:600;font-size:17px;letter-spacing:-.02em;color:var(--tinta)}
+  .brand:hover{text-decoration:none}
+  .brand img{width:24px;height:24px;border-radius:6px;display:block}
+  .brand .tld{color:var(--roxo)}
+
+  main{padding:72px 0 96px}
+  /* eyebrow grande e semibold, como nas feature pages */
+  .eyebrow{display:block;font-size:21px;font-weight:600;letter-spacing:.011em;line-height:1.19;color:var(--roxo)}
+  h1{font-size:clamp(40px,5vw,56px);font-weight:600;letter-spacing:-.005em;line-height:1.0714;margin-top:8px}
+  .atualizado{margin-top:16px;font-size:14px;color:var(--tinta-2);letter-spacing:-.016em}
+  .intro{margin-top:28px;font-size:21px;line-height:1.381;letter-spacing:.011em;color:var(--tinta-2)}
+  h2{font-size:28px;font-weight:600;letter-spacing:.007em;line-height:1.1428;
+     margin:52px 0 0;padding-top:32px;border-top:1px solid var(--linha)}
+  h3{font-size:19px;font-weight:600;letter-spacing:.012em;margin-top:26px}
+  p{margin-top:14px;color:var(--tinta)}
+  p.sub{color:var(--tinta-2);font-size:15px}
+  ul{margin:16px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+  li{padding-left:22px;position:relative;color:var(--tinta)}
+  li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:var(--roxo)}
+  li b{font-weight:600}
+  /* card sem sombra: separa por contraste, como na apple */
+  .card{background:var(--nevoa);border-radius:18px;padding:26px 28px;margin-top:18px}
+  .mono{font-family:'Azeret Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums;letter-spacing:0}
+  footer{border-top:1px solid var(--linha);background:var(--nevoa);padding:40px 0;margin-top:80px}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--tinta-2);font-size:13px}
+  @media(max-width:600px){ .wrap,.nav-in{padding:0 20px} main{padding:52px 0 72px} }
+  .btn-optout{font:inherit;font-size:15px;font-weight:600;color:var(--branco);background:var(--roxo-esc);
+    border:0;border-radius:10px;padding:11px 18px;cursor:pointer}
+  .btn-optout:hover{background:var(--roxo)}
+  .btn-optout[disabled]{background:var(--tinta-2);cursor:default}
+  .q{border-top:1px solid var(--linha);padding:28px 0}
+  .q h2{font-size:21px;line-height:1.19;letter-spacing:.011em;margin:0 0 10px}
+  .q p{color:var(--tinta-2)}
+  .fecho{margin-top:40px;padding:24px;background:var(--nevoa);border-radius:18px}
+</style>
+
+<!-- Medição — mesma tag da home. Aqui ela também precisa existir para o botão de
+     opt-out (seção "Visitantes deste site") poder desligá-la nesta mesma página. -->
+<script>
+  try { if (localStorage.getItem('sem-analytics') === '1') window['ga-disable-G-11WX5VGRP7'] = true; } catch (e) {}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-11WX5VGRP7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    analytics_storage: 'granted'
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-11WX5VGRP7', {
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false
+  });
+  document.addEventListener('click', function (e) {
+    var alvo = e.target;
+    if (!alvo || !alvo.closest) return;
+    var a = alvo.closest('a[href*="wa.me"]');
+    if (!a) return;
+    gtag('event', 'contato_whatsapp', { pagina: location.pathname, cta: a.className || 'sem-classe' });
+  });
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="/"><img src="/assets/brand-mark.png" width="28" height="28" alt="" /><span>baterponto<span class="tld">.app</span></span></a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <span class="eyebrow">Para quem está decidindo</span>
+    <h1>Registro de ponto por exceção</h1>
+    <p class="atualizado">Atualizado em 11 de outubro de 2026</p>
+
+    <p class="intro">
+      Registrar só as exceções em vez de toda batida parece simples e barato. O que decide se vale a
+      pena é o que a lei exige para adotar o modelo e o que a empresa terá nas mãos no dia em que
+      alguém discordar da folha.
+    </p>
+
+      <div class="q">
+        <h2>O que é registro de ponto por exceção?</h2>
+        <p>É o modelo em que a jornada regular é presumida e o empregado só anota o que foge dela: atraso, falta, hora extra, saída antecipada. Em vez de marcar toda entrada e toda saída, o dia normal fica sem marcação e só a exceção é registrada.</p>
+      </div>
+      <div class="q">
+        <h2>A lei permite?</h2>
+        <p>Permite, com condição. A Lei da Liberdade Econômica (Lei 13.874/2019) incluiu o § 4º no art. 74 da CLT, que autoriza o registro por exceção à jornada regular mediante acordo individual escrito, convenção coletiva ou acordo coletivo de trabalho. Sem um desses instrumentos, o modelo não tem base.</p>
+      </div>
+      <div class="q">
+        <h2>Funciona para qualquer empresa?</h2>
+        <p>Tende a funcionar só onde existe uma jornada regular de verdade, igual todos os dias. Com turnos, escala 12x36, revezamento, trabalho externo ou horário que muda toda semana, fica difícil dizer o que é a regra e o que é a exceção — e é justamente a regra que o modelo presume.</p>
+      </div>
+      <div class="q">
+        <h2>Onde o registro por exceção costuma dar problema?</h2>
+        <p>Na hora de provar a jornada. Em uma reclamatória, a empresa com mais de 20 empregados precisa apresentar o controle de jornada, e a falta dele pode levar a jornada alegada pelo empregado a ser presumida verdadeira (Súmula 338 do TST). Registrar só as exceções significa não ter prova dos dias normais, e a jurisprudência sobre o método não é pacífica. Confirme com seu contador ou advogado trabalhista antes de adotar.</p>
+      </div>
+      <div class="q">
+        <h2>Qual é a alternativa?</h2>
+        <p>Registrar toda batida. No baterponto o funcionário bate pelo celular que já tem, o comprovante aparece na tela dele no mesmo segundo, com o NSR — o Número Sequencial de Registro —, e ninguém apaga uma marcação: a correção existe como pedido do funcionário, aprovado pelo gestor, com o antes e o depois no histórico. Com o dia inteiro registrado, não sobra discussão sobre o que era exceção.</p>
+      </div>
+      <div class="q">
+        <h2>O baterponto serve para quem adota o registro por exceção?</h2>
+        <p>Não é esse o modelo dele. O baterponto registra cada batida; ele não é um sistema de registro por exceção. Se o acordo da sua empresa prevê só a anotação de exceções, o app não é a ferramenta. Se a empresa quer sair desse modelo e passar a ter o registro completo, é para isso que ele serve.</p>
+      </div>
+      <div class="q">
+        <h2>Quanto custa registrar toda batida?</h2>
+        <p>R$ 4,90 por pessoa que bate ponto, por mês, e grátis até 2 pessoas. Sem faixa de preço, sem implantação e sem fidelidade.</p>
+      </div>
+      <div class="q">
+        <h2>Este texto é orientação jurídica?</h2>
+        <p>Não. É um texto informativo, atualizado em 11 de outubro de 2026, e a lei e a jurisprudência mudam. A decisão de adotar ou não o registro por exceção deve passar por quem responde juridicamente pela empresa.</p>
+      </div>
+
+    <div class="fecho">
+      <p>
+        Quer ver como fica registrar toda batida pelo celular?
+        <a href="/#app">Veja o app funcionando</a> ou leia as
+        <a href="/perguntas-antes-de-escolher">perguntas antes de escolher um controle de ponto</a>.
+        Dúvida que não está aqui?
+        <a href="https://wa.me/5562985673142?text=Ol%C3%A1%21%20Estou%20vendo%20registro%20de%20ponto%20por%20exce%C3%A7%C3%A3o%20e%20tenho%20uma%20d%C3%BAvida." target="_blank" rel="noopener">mande no WhatsApp</a>.
+      </p>
+    </div>
+  </div>
+</main>
+
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 baterponto · ponto eletrônico para empresas</span>
+    <a href="/">← Voltar ao site</a>
+  </div>
+</footer>
+
+<!-- Opt-out. `ga-disable-<ID>` é a chave que o próprio gtag.js consulta; gravar
+     em localStorage faz o desligamento sobreviver ao fechamento do navegador,
+     porque o bloco no <head> relê essa chave antes de carregar a tag. -->
+<script>
+(function () {
+  var bt = document.getElementById('btOptOut');
+  var status = document.getElementById('optOutStatus');
+  if (!bt) return;
+
+  function desligado() {
+    try { return localStorage.getItem('sem-analytics') === '1'; } catch (e) { return false; }
+  }
+  function pinta() {
+    if (!desligado()) return;
+    bt.disabled = true;
+    bt.textContent = 'Medição desligada neste navegador';
+    status.textContent = '✓';
+  }
+  bt.addEventListener('click', function () {
+    try { localStorage.setItem('sem-analytics', '1'); } catch (e) {}
+    window['ga-disable-G-11WX5VGRP7'] = true;
+    pinta();
+  });
+  pinta();
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "O que é registro de ponto por exceção?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "É o modelo em que a jornada regular é presumida e o empregado só anota o que foge dela: atraso, falta, hora extra, saída antecipada. Em vez de marcar toda entrada e toda saída, o dia normal fica sem marcação e só a exceção é registrada."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A lei permite?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Permite, com condição. A Lei da Liberdade Econômica (Lei 13.874/2019) incluiu o § 4º no art. 74 da CLT, que autoriza o registro por exceção à jornada regular mediante acordo individual escrito, convenção coletiva ou acordo coletivo de trabalho. Sem um desses instrumentos, o modelo não tem base."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Funciona para qualquer empresa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tende a funcionar só onde existe uma jornada regular de verdade, igual todos os dias. Com turnos, escala 12x36, revezamento, trabalho externo ou horário que muda toda semana, fica difícil dizer o que é a regra e o que é a exceção — e é justamente a regra que o modelo presume."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Onde o registro por exceção costuma dar problema?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Na hora de provar a jornada. Em uma reclamatória, a empresa com mais de 20 empregados precisa apresentar o controle de jornada, e a falta dele pode levar a jornada alegada pelo empregado a ser presumida verdadeira (Súmula 338 do TST). Registrar só as exceções significa não ter prova dos dias normais, e a jurisprudência sobre o método não é pacífica. Confirme com seu contador ou advogado trabalhista antes de adotar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual é a alternativa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Registrar toda batida. No baterponto o funcionário bate pelo celular que já tem, o comprovante aparece na tela dele no mesmo segundo, com o NSR — o Número Sequencial de Registro —, e ninguém apaga uma marcação: a correção existe como pedido do funcionário, aprovado pelo gestor, com o antes e o depois no histórico. Com o dia inteiro registrado, não sobra discussão sobre o que era exceção."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O baterponto serve para quem adota o registro por exceção?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não é esse o modelo dele. O baterponto registra cada batida; ele não é um sistema de registro por exceção. Se o acordo da sua empresa prevê só a anotação de exceções, o app não é a ferramenta. Se a empresa quer sair desse modelo e passar a ter o registro completo, é para isso que ele serve."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto custa registrar toda batida?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "R$ 4,90 por pessoa que bate ponto, por mês, e grátis até 2 pessoas. Sem faixa de preço, sem implantação e sem fidelidade."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Este texto é orientação jurídica?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não. É um texto informativo, atualizado em 11 de outubro de 2026, e a lei e a jurisprudência mudam. A decisão de adotar ou não o registro por exceção deve passar por quem responde juridicamente pela empresa."
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>
