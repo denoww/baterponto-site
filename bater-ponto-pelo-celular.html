@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bater ponto pelo celular: como funciona e o que conferir</title>
+<meta name="description" content="Como funciona bater ponto pelo celular: comprovante com NSR, registro que ninguém apaga, selfie, geofence e fila offline. E o que conferir antes de escolher." />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href="https://www.baterponto.app/bater-ponto-pelo-celular" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="baterponto" />
+<meta property="og:title" content="Bater ponto pelo celular: como funciona e o que conferir" />
+<meta property="og:description" content="Como funciona bater ponto pelo celular: comprovante com NSR, registro que ninguém apaga, selfie, geofence e fila offline. E o que conferir antes de escolher." />
+<meta property="og:url" content="https://www.baterponto.app/bater-ponto-pelo-celular" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:image" content="https://www.baterponto.app/assets/og.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Bater ponto pelo celular: como funciona e o que conferir" />
+<meta name="twitter:description" content="Como funciona bater ponto pelo celular: comprovante com NSR, registro que ninguém apaga, selfie, geofence e fila offline. E o que conferir antes de escolher." />
+<meta name="twitter:image" content="https://www.baterponto.app/assets/og.jpg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Azeret+Mono:wght@500&display=swap" rel="stylesheet" />
+<style>
+  /* mesmo sistema visual do index: superfícies apple, SF Pro/Inter, pill, 44px de nav */
+  :root{
+    --branco:#fff; --nevoa:#f5f5f7;
+    --tinta:#1d1d1f; --tinta-2:#6e6e73;
+    --roxo:#7C3AED; --roxo-esc:#6D28D9;
+    --linha:rgba(0,0,0,.12); --max:760px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--branco);color:var(--tinta);
+    font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',system-ui,sans-serif;
+    font-size:17px;line-height:1.4705882353;letter-spacing:-.022em;
+    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  }
+  a{color:var(--roxo-esc);text-decoration:none}
+  a:hover{text-decoration:underline;text-underline-offset:2px}
+  :focus-visible{outline:3px solid var(--roxo);outline-offset:3px;border-radius:6px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  header.nav{
+    position:sticky;top:0;z-index:50;height:52px;
+    border-bottom:1px solid rgba(0,0,0,.08);
+    background:rgba(255,255,255,.72);
+    backdrop-filter:saturate(180%) blur(20px);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);
+  }
+  .nav-in{max-width:var(--max);margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center}
+  .brand{display:flex;align-items:center;gap:8px;font-weight:600;font-size:17px;letter-spacing:-.02em;color:var(--tinta)}
+  .brand:hover{text-decoration:none}
+  .brand img{width:24px;height:24px;border-radius:6px;display:block}
+  .brand .tld{color:var(--roxo)}
+
+  main{padding:72px 0 96px}
+  /* eyebrow grande e semibold, como nas feature pages */
+  .eyebrow{display:block;font-size:21px;font-weight:600;letter-spacing:.011em;line-height:1.19;color:var(--roxo)}
+  h1{font-size:clamp(40px,5vw,56px);font-weight:600;letter-spacing:-.005em;line-height:1.0714;margin-top:8px}
+  .atualizado{margin-top:16px;font-size:14px;color:var(--tinta-2);letter-spacing:-.016em}
+  .intro{margin-top:28px;font-size:21px;line-height:1.381;letter-spacing:.011em;color:var(--tinta-2)}
+  h2{font-size:28px;font-weight:600;letter-spacing:.007em;line-height:1.1428;
+     margin:52px 0 0;padding-top:32px;border-top:1px solid var(--linha)}
+  h3{font-size:19px;font-weight:600;letter-spacing:.012em;margin-top:26px}
+  p{margin-top:14px;color:var(--tinta)}
+  p.sub{color:var(--tinta-2);font-size:15px}
+  ul{margin:16px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+  li{padding-left:22px;position:relative;color:var(--tinta)}
+  li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:var(--roxo)}
+  li b{font-weight:600}
+  /* card sem sombra: separa por contraste, como na apple */
+  .card{background:var(--nevoa);border-radius:18px;padding:26px 28px;margin-top:18px}
+  .mono{font-family:'Azeret Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums;letter-spacing:0}
+  footer{border-top:1px solid var(--linha);background:var(--nevoa);padding:40px 0;margin-top:80px}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--tinta-2);font-size:13px}
+  @media(max-width:600px){ .wrap,.nav-in{padding:0 20px} main{padding:52px 0 72px} }
+  .btn-optout{font:inherit;font-size:15px;font-weight:600;color:var(--branco);background:var(--roxo-esc);
+    border:0;border-radius:10px;padding:11px 18px;cursor:pointer}
+  .btn-optout:hover{background:var(--roxo)}
+  .btn-optout[disabled]{background:var(--tinta-2);cursor:default}
+  .q{border-top:1px solid var(--linha);padding:28px 0}
+  .q h2{font-size:21px;line-height:1.19;letter-spacing:.011em;margin:0 0 10px}
+  .q p{color:var(--tinta-2)}
+  .fecho{margin-top:40px;padding:24px;background:var(--nevoa);border-radius:18px}
+</style>
+
+<!-- Medição — mesma tag da home. Aqui ela também precisa existir para o botão de
+     opt-out (seção "Visitantes deste site") poder desligá-la nesta mesma página. -->
+<script>
+  try { if (localStorage.getItem('sem-analytics') === '1') window['ga-disable-G-11WX5VGRP7'] = true; } catch (e) {}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-11WX5VGRP7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    analytics_storage: 'granted'
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-11WX5VGRP7', {
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false
+  });
+  document.addEventListener('click', function (e) {
+    var alvo = e.target;
+    if (!alvo || !alvo.closest) return;
+    var a = alvo.closest('a[href*="wa.me"]');
+    if (!a) return;
+    gtag('event', 'contato_whatsapp', { pagina: location.pathname, cta: a.className || 'sem-classe' });
+  });
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="/"><img src="/assets/brand-mark.png" width="28" height="28" alt="" /><span>baterponto<span class="tld">.app</span></span></a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <span class="eyebrow">Guia para quem está decidindo</span>
+    <h1>Bater ponto pelo celular</h1>
+    <p class="atualizado">Atualizado em 11 de outubro de 2026</p>
+
+    <p class="intro">
+      Bater ponto pelo celular troca o relógio na parede pelo aparelho que o funcionário já tem no bolso. O que decide se funciona é o que o sistema entrega no dia em que alguém discorda da folha: comprovante, registro que não se altera e prova de quem bateu.
+    </p>
+
+      <div class="q">
+        <h2>Dá para bater ponto pelo celular?</h2>
+        <p>Dá. O registro eletrônico por aplicativo é uma das formas de controle de jornada tratadas na Portaria MTP nº 671/2021, sob o nome de registrador eletrônico de ponto por programa (REP-P). A condição é que o sistema atenda aos requisitos da portaria, e quem responde pela escolha é a empresa. Por isso vale confirmar com o contador ou com um advogado trabalhista antes de adotar.</p>
+      </div>
+      <div class="q">
+        <h2>O que conferir ao escolher um aplicativo de ponto?</h2>
+        <p>Quatro coisas, em ordem de importância. Se o funcionário recebe comprovante da batida na hora. Se a marcação pode ser alterada ou apagada depois — o certo é que não possa. Como o sistema sabe quem bateu. E o que acontece quando o celular está sem internet. O que um sistema de ponto entrega, no fim, é a prova do que aconteceu: se alguma dessas respostas for fraca, a prova também é.</p>
+      </div>
+      <div class="q">
+        <h2>O funcionário recebe comprovante?</h2>
+        <p>Recebe. No baterponto o comprovante aparece na tela do próprio funcionário no mesmo segundo da batida, com o NSR — o Número Sequencial de Registro, que identifica aquela marcação.</p>
+      </div>
+      <div class="q">
+        <h2>Alguém consegue apagar ou editar uma batida?</h2>
+        <p>No baterponto, ninguém apaga uma batida. A correção existe como pedido do funcionário, que o gestor aprova ou recusa, e o histórico guarda o antes e o depois. Quem classifica a marcação como entrada ou saída é o servidor, pela sequência do dia, e não a pessoa que está batendo.</p>
+      </div>
+      <div class="q">
+        <h2>Como saber se quem bateu é a pessoa certa?</h2>
+        <p>Quando a empresa liga a exigência, a batida pede uma selfie com prova de vida em dois passos. A marcação também guarda se a pessoa estava dentro da área do trabalho, a chamada geofence. As duas coisas são opcionais e ficam registradas com a batida.</p>
+      </div>
+      <div class="q">
+        <h2>E se o celular estiver sem internet?</h2>
+        <p>A batida entra numa fila no aparelho com a hora real preservada e sincroniza quando a conexão volta. Isso importa em obra, subsolo, galpão e área rural, onde a falha de sinal é rotina.</p>
+      </div>
+      <div class="q">
+        <h2>O funcionário é obrigado a usar o próprio celular?</h2>
+        <p>Em geral, o uso do aparelho pessoal depende de acordo entre as partes, e o assunto costuma envolver consentimento e custo de internet. Para quem não tem celular ou não quer usar o próprio, o baterponto tem o modo kiosk: um tablet na entrada atende a equipe.</p>
+      </div>
+      <div class="q">
+        <h2>Quanto custa bater ponto pelo celular?</h2>
+        <p>R$ 4,90 por pessoa que bate ponto, por mês, e grátis até 2 pessoas. Sem faixa de preço, sem implantação e sem fidelidade.</p>
+      </div>
+      <div class="q">
+        <h2>O que o baterponto não faz?</h2>
+        <p>Não existe integração pronta com folha de pagamento, não existe envio de eSocial e o app não manda notificação push. Também não divulgamos número de clientes nem certificação, porque o produto é novo e não temos nenhuma para afirmar.</p>
+      </div>
+      <div class="q">
+        <h2>Este texto é orientação jurídica?</h2>
+        <p>Não. É um texto informativo, atualizado em 11 de outubro de 2026, e a lei muda. A decisão de adotar o ponto pelo celular deve passar por quem responde juridicamente pela empresa.</p>
+      </div>
+
+    <div class="fecho">
+      <p>
+        Quer ver na prática? <a href="/#app">Veja o app funcionando</a>, leia <a href="/perguntas-antes-de-escolher">as perguntas antes de escolher um controle de ponto</a> ou entenda o <a href="/registro-de-ponto-por-excecao">registro de ponto por exceção</a>. Dúvida que não está aqui? <a href="https://wa.me/5562985673142?text=Ol%C3%A1%21%20Quero%20bater%20ponto%20pelo%20celular%20e%20tenho%20uma%20d%C3%BAvida." target="_blank" rel="noopener">mande no WhatsApp</a>.
+      </p>
+    </div>
+  </div>
+</main>
+
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 baterponto · ponto eletrônico para empresas</span>
+    <a href="/">← Voltar ao site</a>
+  </div>
+</footer>
+
+<!-- Opt-out. `ga-disable-<ID>` é a chave que o próprio gtag.js consulta; gravar
+     em localStorage faz o desligamento sobreviver ao fechamento do navegador,
+     porque o bloco no <head> relê essa chave antes de carregar a tag. -->
+<script>
+(function () {
+  var bt = document.getElementById('btOptOut');
+  var status = document.getElementById('optOutStatus');
+  if (!bt) return;
+
+  function desligado() {
+    try { return localStorage.getItem('sem-analytics') === '1'; } catch (e) { return false; }
+  }
+  function pinta() {
+    if (!desligado()) return;
+    bt.disabled = true;
+    bt.textContent = 'Medição desligada neste navegador';
+    status.textContent = '✓';
+  }
+  bt.addEventListener('click', function () {
+    try { localStorage.setItem('sem-analytics', '1'); } catch (e) {}
+    window['ga-disable-G-11WX5VGRP7'] = true;
+    pinta();
+  });
+  pinta();
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Dá para bater ponto pelo celular?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dá. O registro eletrônico por aplicativo é uma das formas de controle de jornada tratadas na Portaria MTP nº 671/2021, sob o nome de registrador eletrônico de ponto por programa (REP-P). A condição é que o sistema atenda aos requisitos da portaria, e quem responde pela escolha é a empresa. Por isso vale confirmar com o contador ou com um advogado trabalhista antes de adotar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que conferir ao escolher um aplicativo de ponto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Quatro coisas, em ordem de importância. Se o funcionário recebe comprovante da batida na hora. Se a marcação pode ser alterada ou apagada depois — o certo é que não possa. Como o sistema sabe quem bateu. E o que acontece quando o celular está sem internet. O que um sistema de ponto entrega, no fim, é a prova do que aconteceu: se alguma dessas respostas for fraca, a prova também é."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O funcionário recebe comprovante?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Recebe. No baterponto o comprovante aparece na tela do próprio funcionário no mesmo segundo da batida, com o NSR — o Número Sequencial de Registro, que identifica aquela marcação."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Alguém consegue apagar ou editar uma batida?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No baterponto, ninguém apaga uma batida. A correção existe como pedido do funcionário, que o gestor aprova ou recusa, e o histórico guarda o antes e o depois. Quem classifica a marcação como entrada ou saída é o servidor, pela sequência do dia, e não a pessoa que está batendo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como saber se quem bateu é a pessoa certa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Quando a empresa liga a exigência, a batida pede uma selfie com prova de vida em dois passos. A marcação também guarda se a pessoa estava dentro da área do trabalho, a chamada geofence. As duas coisas são opcionais e ficam registradas com a batida."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "E se o celular estiver sem internet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A batida entra numa fila no aparelho com a hora real preservada e sincroniza quando a conexão volta. Isso importa em obra, subsolo, galpão e área rural, onde a falha de sinal é rotina."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O funcionário é obrigado a usar o próprio celular?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Em geral, o uso do aparelho pessoal depende de acordo entre as partes, e o assunto costuma envolver consentimento e custo de internet. Para quem não tem celular ou não quer usar o próprio, o baterponto tem o modo kiosk: um tablet na entrada atende a equipe."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto custa bater ponto pelo celular?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "R$ 4,90 por pessoa que bate ponto, por mês, e grátis até 2 pessoas. Sem faixa de preço, sem implantação e sem fidelidade."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que o baterponto não faz?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não existe integração pronta com folha de pagamento, não existe envio de eSocial e o app não manda notificação push. Também não divulgamos número de clientes nem certificação, porque o produto é novo e não temos nenhuma para afirmar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Este texto é orientação jurídica?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não. É um texto informativo, atualizado em 11 de outubro de 2026, e a lei muda. A decisão de adotar o ponto pelo celular deve passar por quem responde juridicamente pela empresa."
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>
