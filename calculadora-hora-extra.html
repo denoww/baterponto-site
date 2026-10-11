@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calculadora de hora extra com reflexo no DSR</title>
+<meta name="description" content="Calcule o valor da hora extra a 50% e a 100% e o reflexo no DSR a partir do salário e do divisor da jornada. Estimativa gratuita, sem cadastro." />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href="https://www.baterponto.app/calculadora-hora-extra" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="baterponto" />
+<meta property="og:title" content="Calculadora de hora extra com reflexo no DSR" />
+<meta property="og:description" content="Calcule o valor da hora extra a 50% e a 100% e o reflexo no DSR a partir do salário e do divisor da jornada. Estimativa gratuita, sem cadastro." />
+<meta property="og:url" content="https://www.baterponto.app/calculadora-hora-extra" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:image" content="https://www.baterponto.app/assets/og.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Calculadora de hora extra com reflexo no DSR" />
+<meta name="twitter:description" content="Calcule o valor da hora extra a 50% e a 100% e o reflexo no DSR a partir do salário e do divisor da jornada. Estimativa gratuita, sem cadastro." />
+<meta name="twitter:image" content="https://www.baterponto.app/assets/og.jpg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Azeret+Mono:wght@500&display=swap" rel="stylesheet" />
+<style>
+  /* mesmo sistema visual do index: superfícies apple, SF Pro/Inter, pill, 44px de nav */
+  :root{
+    --branco:#fff; --nevoa:#f5f5f7;
+    --tinta:#1d1d1f; --tinta-2:#6e6e73;
+    --roxo:#7C3AED; --roxo-esc:#6D28D9;
+    --linha:rgba(0,0,0,.12); --max:760px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--branco);color:var(--tinta);
+    font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',system-ui,sans-serif;
+    font-size:17px;line-height:1.4705882353;letter-spacing:-.022em;
+    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  }
+  a{color:var(--roxo-esc);text-decoration:none}
+  a:hover{text-decoration:underline;text-underline-offset:2px}
+  :focus-visible{outline:3px solid var(--roxo);outline-offset:3px;border-radius:6px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  header.nav{
+    position:sticky;top:0;z-index:50;height:52px;
+    border-bottom:1px solid rgba(0,0,0,.08);
+    background:rgba(255,255,255,.72);
+    backdrop-filter:saturate(180%) blur(20px);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);
+  }
+  .nav-in{max-width:var(--max);margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center}
+  .brand{display:flex;align-items:center;gap:8px;font-weight:600;font-size:17px;letter-spacing:-.02em;color:var(--tinta)}
+  .brand:hover{text-decoration:none}
+  .brand img{width:24px;height:24px;border-radius:6px;display:block}
+  .brand .tld{color:var(--roxo)}
+
+  main{padding:72px 0 96px}
+  /* eyebrow grande e semibold, como nas feature pages */
+  .eyebrow{display:block;font-size:21px;font-weight:600;letter-spacing:.011em;line-height:1.19;color:var(--roxo)}
+  h1{font-size:clamp(40px,5vw,56px);font-weight:600;letter-spacing:-.005em;line-height:1.0714;margin-top:8px}
+  .atualizado{margin-top:16px;font-size:14px;color:var(--tinta-2);letter-spacing:-.016em}
+  .intro{margin-top:28px;font-size:21px;line-height:1.381;letter-spacing:.011em;color:var(--tinta-2)}
+  h2{font-size:28px;font-weight:600;letter-spacing:.007em;line-height:1.1428;
+     margin:52px 0 0;padding-top:32px;border-top:1px solid var(--linha)}
+  h3{font-size:19px;font-weight:600;letter-spacing:.012em;margin-top:26px}
+  p{margin-top:14px;color:var(--tinta)}
+  p.sub{color:var(--tinta-2);font-size:15px}
+  ul{margin:16px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+  li{padding-left:22px;position:relative;color:var(--tinta)}
+  li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:var(--roxo)}
+  li b{font-weight:600}
+  /* card sem sombra: separa por contraste, como na apple */
+  .card{background:var(--nevoa);border-radius:18px;padding:26px 28px;margin-top:18px}
+  .mono{font-family:'Azeret Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums;letter-spacing:0}
+  footer{border-top:1px solid var(--linha);background:var(--nevoa);padding:40px 0;margin-top:80px}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--tinta-2);font-size:13px}
+  @media(max-width:600px){ .wrap,.nav-in{padding:0 20px} main{padding:52px 0 72px} }
+  .btn-optout{font:inherit;font-size:15px;font-weight:600;color:var(--branco);background:var(--roxo-esc);
+    border:0;border-radius:10px;padding:11px 18px;cursor:pointer}
+  .btn-optout:hover{background:var(--roxo)}
+  .btn-optout[disabled]{background:var(--tinta-2);cursor:default}
+  .q{border-top:1px solid var(--linha);padding:28px 0}
+  .q h2{font-size:21px;line-height:1.19;letter-spacing:.011em;margin:0 0 10px}
+  .q p{color:var(--tinta-2)}
+  .fecho{margin-top:40px;padding:24px;background:var(--nevoa);border-radius:18px}
+
+  /* calculadora: card de contraste, sem sombra, como a calculadora de preço da home */
+  .calc{background:var(--nevoa);border-radius:28px;padding:32px;margin-top:32px}
+  .calc form{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .campo{display:flex;flex-direction:column;gap:6px}
+  .campo label{font-size:15px;font-weight:600;color:var(--tinta)}
+  .campo small{font-size:13px;color:var(--tinta-2);letter-spacing:-.016em}
+  .campo input,.campo select{font:inherit;font-size:17px;padding:12px 14px;border:1px solid var(--linha);border-radius:12px;background:var(--branco);color:var(--tinta);width:100%}
+  .calc .total{margin-top:28px;padding-top:24px;border-top:1px solid var(--linha)}
+  .calc dl{display:grid;grid-template-columns:1fr auto;gap:10px 0;margin-top:4px}
+  .calc dt{color:var(--tinta-2)}
+  .calc dd{text-align:right;font-variant-numeric:tabular-nums}
+  .calc .final dt,.calc .final dd{font-size:24px;font-weight:600;color:var(--tinta);letter-spacing:.007em;padding-top:10px;border-top:1px solid var(--linha)}
+  .calc .aviso{margin-top:16px;font-size:14px;color:var(--tinta-2)}
+  @media(max-width:600px){.calc{padding:24px 20px}.calc form{grid-template-columns:1fr}}
+</style>
+
+<!-- Medição — mesma tag da home. Aqui ela também precisa existir para o botão de
+     opt-out (seção "Visitantes deste site") poder desligá-la nesta mesma página. -->
+<script>
+  try { if (localStorage.getItem('sem-analytics') === '1') window['ga-disable-G-11WX5VGRP7'] = true; } catch (e) {}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-11WX5VGRP7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    analytics_storage: 'granted'
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-11WX5VGRP7', {
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false
+  });
+  document.addEventListener('click', function (e) {
+    var alvo = e.target;
+    if (!alvo || !alvo.closest) return;
+    var a = alvo.closest('a[href*="wa.me"]');
+    if (!a) return;
+    gtag('event', 'contato_whatsapp', { pagina: location.pathname, cta: a.className || 'sem-classe' });
+  });
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="/"><img src="/assets/brand-mark.png" width="28" height="28" alt="" /><span>baterponto<span class="tld">.app</span></span></a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <span class="eyebrow">Ferramenta gratuita</span>
+    <h1>Calculadora de hora extra</h1>
+    <p class="atualizado">Atualizado em 11 de outubro de 2026</p>
+
+    <p class="intro">
+      Informe o salário, o divisor da jornada e as horas extras do mês. A conta roda no seu navegador:
+      nenhum dado é enviado a lugar nenhum.
+    </p>
+
+    <div class="calc">
+      <form id="form" onsubmit="return false">
+        <div class="campo"><label for="salario">Salário mensal (R$)</label>
+          <input id="salario" type="number" inputmode="decimal" min="0" step="0.01" value="2200" /></div>
+        <div class="campo"><label for="divisor">Jornada (divisor)</label>
+          <select id="divisor">
+            <option value="220" selected>44 horas semanais (220)</option>
+            <option value="200">40 horas semanais (200)</option>
+            <option value="180">36 horas semanais (180)</option>
+            <option value="150">30 horas semanais (150)</option>
+          </select></div>
+        <div class="campo"><label for="h50">Horas extras a 50%</label>
+          <input id="h50" type="number" inputmode="decimal" min="0" step="0.25" value="10" /></div>
+        <div class="campo"><label for="h100">Horas extras a 100%</label>
+          <input id="h100" type="number" inputmode="decimal" min="0" step="0.25" value="5" /></div>
+        <div class="campo"><label for="uteis">Dias úteis do mês</label>
+          <input id="uteis" type="number" inputmode="numeric" min="1" max="31" step="1" value="25" />
+          <small>Conta os sábados; não conta domingos e feriados.</small></div>
+        <div class="campo"><label for="dsr">Domingos e feriados do mês</label>
+          <input id="dsr" type="number" inputmode="numeric" min="0" max="31" step="1" value="5" /></div>
+      </form>
+
+      <div class="total" aria-live="polite">
+        <dl>
+          <dt>Valor da hora normal</dt><dd id="rHora">—</dd>
+          <dt>Horas extras a 50%</dt><dd id="r50">—</dd>
+          <dt>Horas extras a 100%</dt><dd id="r100">—</dd>
+          <dt>Total das horas extras</dt><dd id="rHE">—</dd>
+          <dt>Reflexo no DSR</dt><dd id="rDSR">—</dd>
+          <div class="final" style="display:contents"><dt>Total estimado</dt><dd id="rTotal">—</dd></div>
+        </dl>
+        <p class="aviso">Estimativa. Não inclui reflexos em férias, 13º e FGTS, nem adicional noturno ou regras de convenção coletiva.</p>
+      </div>
+    </div>
+
+      <div class="q">
+        <h2>Como se calcula a hora extra?</h2>
+        <p>Divide-se o salário mensal pelo divisor da jornada para achar o valor da hora normal — 220 para 44 horas semanais, 200 para 40 horas. A hora extra vale a hora normal acrescida do adicional: a 50%, multiplica-se por 1,5; a 100%, por 2.</p>
+      </div>
+      <div class="q">
+        <h2>Qual é o adicional mínimo da hora extra?</h2>
+        <p>A Constituição (art. 7º, XVI) fixa o mínimo de 50% sobre a hora normal. A convenção coletiva ou o acordo da categoria pode prever percentual maior, e o trabalho em domingos e feriados costuma ter adicional de 100%. Confira o que vale na sua categoria.</p>
+      </div>
+      <div class="q">
+        <h2>O que é o reflexo da hora extra no DSR?</h2>
+        <p>O descanso semanal remunerado também precisa refletir as horas extras habituais. A conta usual divide o total das horas extras do mês pelos dias úteis e multiplica pelos domingos e feriados. É a parte que mais costuma ser esquecida, e por isso a calculadora a mostra separada.</p>
+      </div>
+      <div class="q">
+        <h2>O resultado da calculadora é o valor final da folha?</h2>
+        <p>Não. É uma estimativa. Ela não inclui os reflexos das horas extras em férias, 13º salário e FGTS, nem adicional noturno, e não considera regras específicas de convenção coletiva. Para o valor da folha, vale o cálculo de quem a processa.</p>
+      </div>
+      <div class="q">
+        <h2>Como registrar as horas extras com prova?</h2>
+        <p>Com o registro de cada batida. No baterponto o funcionário bate pelo celular, o comprovante com NSR aparece na tela dele no mesmo segundo e ninguém apaga uma marcação. O baterponto não calcula a folha nem se integra a ela: ele registra a jornada, e o cálculo fica com você.</p>
+      </div>
+
+    <div class="fecho">
+      <p>
+        Leia também o post do blog <a href="https://blog.baterponto.app/como-calcular-hora-extra-sem-esquecer-o-reflexo-no-dsr">como calcular hora extra sem esquecer o reflexo no DSR</a>,
+        veja como <a href="/bater-ponto-pelo-celular">bater ponto pelo celular</a> funciona ou
+        <a href="/#app">veja o app funcionando</a>.
+        Dúvida?
+        <a href="https://wa.me/5562985673142?text=Ol%C3%A1%21%20Usei%20a%20calculadora%20de%20hora%20extra%20e%20tenho%20uma%20d%C3%BAvida." target="_blank" rel="noopener">Mande no WhatsApp</a>.
+      </p>
+    </div>
+  </div>
+</main>
+
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 baterponto · ponto eletrônico para empresas</span>
+    <a href="/">← Voltar ao site</a>
+  </div>
+</footer>
+
+<!-- Opt-out. `ga-disable-<ID>` é a chave que o próprio gtag.js consulta; gravar
+     em localStorage faz o desligamento sobreviver ao fechamento do navegador,
+     porque o bloco no <head> relê essa chave antes de carregar a tag. -->
+<script>
+(function () {
+  var bt = document.getElementById('btOptOut');
+  var status = document.getElementById('optOutStatus');
+  if (!bt) return;
+
+  function desligado() {
+    try { return localStorage.getItem('sem-analytics') === '1'; } catch (e) { return false; }
+  }
+  function pinta() {
+    if (!desligado()) return;
+    bt.disabled = true;
+    bt.textContent = 'Medição desligada neste navegador';
+    status.textContent = '✓';
+  }
+  bt.addEventListener('click', function () {
+    try { localStorage.setItem('sem-analytics', '1'); } catch (e) {}
+    window['ga-disable-G-11WX5VGRP7'] = true;
+    pinta();
+  });
+  pinta();
+})();
+</script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var brl = function (v) { return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); };
+  var num = function (id) { var v = parseFloat($(id).value); return isFinite(v) && v > 0 ? v : 0; };
+  function calcular() {
+    var salario = num('salario'), divisor = num('divisor');
+    var hora = divisor ? salario / divisor : 0;
+    var v50 = num('h50') * hora * 1.5, v100 = num('h100') * hora * 2;
+    var he = v50 + v100;
+    var uteis = num('uteis'), dsr = num('dsr');
+    var reflexo = uteis ? he / uteis * dsr : 0;
+    $('rHora').textContent = brl(hora);
+    $('r50').textContent = brl(v50);
+    $('r100').textContent = brl(v100);
+    $('rHE').textContent = brl(he);
+    $('rDSR').textContent = brl(reflexo);
+    $('rTotal').textContent = brl(he + reflexo);
+  }
+  ['salario','divisor','h50','h100','uteis','dsr'].forEach(function (id) {
+    $(id).addEventListener('input', calcular);
+  });
+  calcular();
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Como se calcula a hora extra?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Divide-se o salário mensal pelo divisor da jornada para achar o valor da hora normal — 220 para 44 horas semanais, 200 para 40 horas. A hora extra vale a hora normal acrescida do adicional: a 50%, multiplica-se por 1,5; a 100%, por 2."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual é o adicional mínimo da hora extra?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Constituição (art. 7º, XVI) fixa o mínimo de 50% sobre a hora normal. A convenção coletiva ou o acordo da categoria pode prever percentual maior, e o trabalho em domingos e feriados costuma ter adicional de 100%. Confira o que vale na sua categoria."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que é o reflexo da hora extra no DSR?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O descanso semanal remunerado também precisa refletir as horas extras habituais. A conta usual divide o total das horas extras do mês pelos dias úteis e multiplica pelos domingos e feriados. É a parte que mais costuma ser esquecida, e por isso a calculadora a mostra separada."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O resultado da calculadora é o valor final da folha?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não. É uma estimativa. Ela não inclui os reflexos das horas extras em férias, 13º salário e FGTS, nem adicional noturno, e não considera regras específicas de convenção coletiva. Para o valor da folha, vale o cálculo de quem a processa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como registrar as horas extras com prova?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Com o registro de cada batida. No baterponto o funcionário bate pelo celular, o comprovante com NSR aparece na tela dele no mesmo segundo e ninguém apaga uma marcação. O baterponto não calcula a folha nem se integra a ela: ele registra a jornada, e o cálculo fica com você."
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>
