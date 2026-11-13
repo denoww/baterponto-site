@@ -690,6 +690,29 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px)}
   // ANTES do gtag.js, senão a primeira medição já saiu.
   try { if (localStorage.getItem('sem-analytics') === '1') window['ga-disable-G-11WX5VGRP7'] = true; } catch (e) {}
 </script>
+<script>
+  // ORIGEM DA 1ª VISITA → conta criada no /comecar. Grava UMA vez (nunca sobrescreve) o
+  // cookie `sc_origem` em .baterponto.app com o HOSTNAME de quem mandou (nunca a URL
+  // inteira: ela pode carregar termo de busca) e as UTMs. O ERP lê no cadastro
+  // (Cliente::Onboarding::OrigemVisita, só whitelist) e grava junto da conta.
+  // Respeita o mesmo opt-out da medição (/privacidade). 90 dias.
+  try {
+    var semAnalytics = localStorage.getItem('sem-analytics') === '1';
+    if (!semAnalytics && document.cookie.indexOf('sc_origem=') === -1) {
+      var o = {}, q = new URLSearchParams(location.search);
+      if (document.referrer) {
+        var h = new URL(document.referrer).hostname;
+        if (!/(^|\.)baterponto\.app$/.test(h)) o.ref = h;
+      }
+      ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
+        var v = q.get(k); if (v) o[k] = v.slice(0, 60);
+      });
+      if (!o.ref && !o.utm_source) o.ref = 'direto';
+      document.cookie = 'sc_origem=' + encodeURIComponent(JSON.stringify(o)) +
+        '; Max-Age=7776000; Path=/; Domain=.baterponto.app; SameSite=Lax; Secure';
+    }
+  } catch (e) {}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-11WX5VGRP7"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
