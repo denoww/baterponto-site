@@ -220,6 +220,7 @@
     </p>
     <ul>
       <li><b>Medimos audiência</b> com o Google Analytics: páginas visitadas, de onde você veio (busca, anúncio, link), tipo de aparelho e cidade aproximada. Também registramos quando alguém clica em um botão de WhatsApp, para saber quais páginas geram contato.</li>
+      <li><b>Guardamos de onde veio a sua primeira visita</b> num cookie deste site (<code>sc_origem</code>, 90 dias): só o nome do site que trouxe você (por exemplo, chatgpt.com ou google.com) e a campanha do link, se houver. Se você criar uma conta, essa origem fica registrada junto dela, para sabermos quais canais trazem clientes. Desligar a medição abaixo apaga esse cookie.</li>
       <li><b>Não fazemos publicidade com isso.</b> Os sinais de anúncio do Google chegam desligados neste site: não construímos público de remarketing, não personalizamos anúncio e não cruzamos sua navegação com sua conta Google.</li>
       <li><b>Não pedimos, nem guardamos, nada que identifique você</b> nesta navegação. Nome, e-mail e telefone só existem se você escolher nos escrever no WhatsApp — e aí a conversa é você quem começa.</li>
       <li><b>Base legal:</b> legítimo interesse em entender como as pessoas encontram e usam o site, com a transparência desta seção e o desligamento abaixo.</li>
@@ -274,6 +275,7 @@
   }
   bt.addEventListener('click', function () {
     try { localStorage.setItem('sem-analytics', '1'); } catch (e) {}
+    document.cookie = 'sc_origem=; Max-Age=0; Path=/; Domain=.baterponto.app; SameSite=Lax; Secure';
     window['ga-disable-G-11WX5VGRP7'] = true;
     pinta();
   });
