@@ -195,7 +195,24 @@ img{display:block;max-width:100%}
 
 /* ======================= IMPRESSÃO / PDF =======================
    As três travas do playbook. Mexer aqui quebra o PDF em silêncio. */
+/* vídeo do livreto (o mesmo bloco do livreto do SeuCondomínio): 16:9 no desktop, 9:16 no celular,
+   preload none; o poster só liga no <video> visível (JS do bloco). No PDF o vídeo some e fica o poster. */
+.lvvideo{max-width:var(--maxw);margin:0 auto;padding:0 24px clamp(56px,8vw,96px)}
+.lvvideo video{display:block;width:100%;aspect-ratio:16/9;border-radius:22px;background:#000;box-shadow:0 30px 80px rgba(0,0,0,.18)}
+.lvvideo video.lvv-v{aspect-ratio:9/16}
+.lvv-v{display:none!important;max-width:420px;margin:0 auto}
+.lvv-cap{text-align:center;margin:0 0 16px}
+.lvv-print{display:none;text-align:center;color:var(--tinta-2);text-decoration:none}
+.lvv-pimg{display:block;width:100%;max-width:640px;aspect-ratio:16/9;margin:0 auto 10px;border-radius:14px;background:#000 center/cover no-repeat}
+@media(max-width:700px){.lvv-h{display:none!important}.lvv-v{display:block!important}}
+@media(orientation:landscape) and (max-height:500px){.lvvideo video.lvv-h{width:auto;max-width:100%;max-height:calc(100vh - 80px);margin:0 auto}}
+
 @media print{
+  /* vídeo: no papel some o player e fica o poster com o endereço */
+  .lvvideo video,.lvv-cap{display:none!important}
+  .lvv-print{display:block!important;break-inside:avoid}
+  .lvv-pimg{background-image:var(--lvv-poster)}
+  .lvvideo{padding:0 24px 20px!important}
   /* 1. sem isto o PDF sai EM BRANCO (o reveal nunca dispara sem scroll) */
   .rev{opacity:1!important;transform:none!important}
   /* 2. sem isto hero/CTA/fotos saem sem cor */
@@ -268,7 +285,13 @@ img{display:block;max-width:100%}
   <div class="hero-stage rev"><img src="/assets/hero.jpg" width="1600" height="1067"
     alt="Funcionário registra o ponto tocando a tela do celular."></div>
 </header>
-<section class="credo rev"><h2>Ninguém apaga uma batida. <span class="g">Nem a gente.</span></h2></section>
+<section class="credo rev"><h2>Ninguém apaga uma batida. <span class="g">Nem a gente.</span></h2></section><section class="lvvideo rev" aria-label="Vídeo do livreto">
+  <p class="lvv-cap"><span class="eyebrow">Veja em 1 minuto</span></p>
+  <video class="lvv-h" controls preload="none" playsinline data-poster="https://d8odo0nidtkh4.cloudfront.net/wysiwyg_sistema/images/2026/11/15/19/livreto-marca-baterponto-poster_h-psl7f6ps.jpg" aria-label="Vídeo de 1 minuto sobre o produto"><source src="https://d8odo0nidtkh4.cloudfront.net/wysiwyg_sistema/images/2026/11/15/19/livreto-marca-baterponto-h-psl7f6ps.mp4" type="video/mp4"></video>
+  <video class="lvv-v" controls preload="none" playsinline data-poster="https://d8odo0nidtkh4.cloudfront.net/wysiwyg_sistema/images/2026/11/15/19/livreto-marca-baterponto-poster_v-psl7f6ps.jpg" aria-label="Vídeo de 1 minuto sobre o produto, versão vertical"><source src="https://d8odo0nidtkh4.cloudfront.net/wysiwyg_sistema/images/2026/11/15/19/livreto-marca-baterponto-v-psl7f6ps.mp4" type="video/mp4"></video>
+  <a class="lvv-print" href="https://www.baterponto.app/livreto/" style="--lvv-poster:url('https://d8odo0nidtkh4.cloudfront.net/wysiwyg_sistema/images/2026/11/15/19/livreto-marca-baterponto-poster_h-psl7f6ps.jpg')"><i class="lvv-pimg"></i><span>Assista ao vídeo em www.baterponto.app/livreto/</span></a>
+  <script>(function(){var vs=document.querySelectorAll(".lvvideo video");function f(){vs.forEach(function(x){if(getComputedStyle(x).display!=="none"&&!x.poster)x.poster=x.getAttribute("data-poster");});}f();addEventListener("resize",f);})();</script>
+</section>
 <section class="cap " id="batida" aria-label="A batida">
   <div class="cap-in">
     <div class="cap-head rev"><span class="eyebrow">A batida</span><h2>Três toques, uns oito segundos.</h2>
@@ -343,7 +366,7 @@ img{display:block;max-width:100%}
   <div class="btns"><a class="btn" href="/livreto.pdf" download="livreto-baterponto.pdf">
     Baixar o livreto (PDF)</a></div>
 </section>
-<footer class="foot"><div class="foot-in"><span>baterponto · ponto eletrônico para empresas · <a href="https://www.baterponto.app/privacidade">Privacidade</a></span><span>Livreto v03/11/2026 · 3100eaa</span></div></footer>
+<footer class="foot"><div class="foot-in"><span>baterponto · ponto eletrônico para empresas · <a href="https://www.baterponto.app/privacidade">Privacidade</a></span><span>Livreto v15/11/2026 · 7760592</span></div></footer>
 <script>
 (function(){
   if(matchMedia("(prefers-reduced-motion: reduce)").matches){

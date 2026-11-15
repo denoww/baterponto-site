@@ -51,6 +51,18 @@ HERO = {
 
 CREDO = ('Ninguém apaga uma batida. <span class="g">Nem a gente.</span>')
 
+# ---------------------------------------------------------------- vídeo (entra logo abaixo do credo)
+# Vídeo narrado de ~50 s, 16:9 no desktop e 9:16 no celular. Feito pelo motor de vídeo do ERP
+# (repo seucondominio: livreto/video/marca-baterponto/ + video_engine/), na marca do baterponto, e
+# hospedado na CDN do ERP. O roteiro só diz o que este livreto diz. Refez o vídeo? Rode lá
+# `bash livreto/video/render.sh marca-baterponto subir` e cole aqui o dict que ele imprime.
+VIDEO = {
+    "h":        "https://d8odo0nidtkh4.cloudfront.net/wysiwyg_sistema/images/2026/11/15/19/livreto-marca-baterponto-h-psl7f6ps.mp4",
+    "poster_h": "https://d8odo0nidtkh4.cloudfront.net/wysiwyg_sistema/images/2026/11/15/19/livreto-marca-baterponto-poster_h-psl7f6ps.jpg",
+    "v":        "https://d8odo0nidtkh4.cloudfront.net/wysiwyg_sistema/images/2026/11/15/19/livreto-marca-baterponto-v-psl7f6ps.mp4",
+    "poster_v": "https://d8odo0nidtkh4.cloudfront.net/wysiwyg_sistema/images/2026/11/15/19/livreto-marca-baterponto-poster_v-psl7f6ps.jpg",
+}
+
 # ---------------------------------------------------------------- storyboards
 # (chave, capítulo-cor, título, [(cena, título, legenda)])
 BOARDS = {
