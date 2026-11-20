@@ -476,16 +476,15 @@ def build():
             f'<a href="{C.SITE}/privacidade">Privacidade</a></span>'
             f'<span>Livreto v{hoje} · {sha}</span></div></footer>')
 
-    desc = ("Livreto do baterponto: ponto eletrônico no celular do funcionário. NSR na hora, "
-            "registro imutável (REP-P, Portaria 671), selfie com prova de vida, geofence e fila "
-            "offline. R$ 4,90 por pessoa/mês, grátis até 2.")
+    desc = ("Livreto do baterponto: ponto eletrônico no celular. NSR na hora, REP-P "
+            "(Portaria 671), selfie com prova de vida. R$ 4,90 por pessoa/mês, grátis até 2.")
     url = f"{C.SITE}/livreto/"
     head = f'''<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Livreto do baterponto — ponto eletrônico no celular do funcionário</title>
+<title>Livreto do baterponto — ponto eletrônico no celular</title>
 <meta name="description" content="{desc}">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="{url}">
